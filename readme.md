@@ -14,7 +14,7 @@ Diseñadora textil, dibujo estampados principalmente para moda de mujer. Quiero 
 MBA, cansada de ser contadora, quiero dedicarme a la programacion por eso acepte participar del desarrollo de este nuevo sitio web, no tengo idea de moda pero me encantan los diseños de Naty Granade, asique no dude en unirme a su equipo!!
 
 ###### Mercedes Scella
-...
+Analista en sistemas  con ganas de formarme profesionalmente en el mundo de la programación. Buscando experiencias y proyectos que formen ese camino.
 
 ## Instalacion
 
