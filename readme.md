@@ -1,4 +1,4 @@
-# Grupo 1 - Nombre del Proyecto
+# Grupo 1 - NAM Studio
 
 Este proyecto se trata de un ecommerce orientado a personas interesadas en comprar estampas para ser aplicadas a cualquier producto, ya se indumentaria, deco de hogar, objetos o cualquier plataforma digital. Cuando comenzamos a planificar este proyecto nos propusimos lograr que el usuario pueda tener un conocimiento básico sobre las tendecias del momento y poder comprar estampas digitales. En esta aplicacion los usuarios registrados pueden ver diseños de estampados con repeticion continua exclusivos y no exclusivos creados a partir de las tendencias actuales. En el futuro queremos expandir este desarrollo y lograr crear colecciones especificas de acuerdo a los pedidos de los clientes.
 
