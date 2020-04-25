@@ -26,7 +26,9 @@ Analista en sistemas  con ganas de formarme profesionalmente en el mundo de la p
 
 Ingresar a ```http://localhost/namstudio/index.html``` 
 
+## Tablero de trabajo
 
+https://trello.com/invite/b/FXBZ5ZaZ/621e102f3d7f6ed5b68e33acfacff32e/nam-studio
 
 ## Recursos
 
