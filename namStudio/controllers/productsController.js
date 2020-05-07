@@ -3,7 +3,7 @@ let productsController= {
 res.render('collection')
    },
     idProduct: function( req, res){
-        res.render('req.params.idProduct')
+        res.render('idProduct',{id:req.params.idProduct})
     }
 }
 
