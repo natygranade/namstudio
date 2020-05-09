@@ -2,9 +2,9 @@ body{
  width:100%;
   font-family: roboto;
   color: #666666;
-
-
+  text-align: center;
 }
+
 header{
   padding-top: 15px;
   padding-bottom: 5px;
@@ -13,7 +13,38 @@ header{
   width:100%;
   padding-left: 0;
   padding-right: 0;
+  justify-content: space-between;
 }
+#search input{
+  border: solid 1px #cacaca;
+  color:#cacaca;
+  width:60%;
+  border-radius: 5px;
+}
+
+#search button{
+  background-color: white;
+  border: none;
+  color: #666666;
+}
+#search button:hover{
+color:  rgb(190, 10, 10);
+}
+.header{
+  justify-content: space-between;
+
+}
+.log{
+  text-align: right;
+}
+.log a{
+  background-color: #cacaca;
+  border-radius: 5px;
+  color:white;
+  font-size: 0.7em;
+  padding: 1vh 2% ;
+}
+
 video{
   width:100%;
   padding-left: 0;
@@ -28,6 +59,9 @@ a{
 a:hover{
   color: rgb(190, 10, 10);
   text-decoration: none;
+}
+nav{
+  padding: 0.2vh 0;
 }
 .fa-facebook-f{
   background-color: #666666;
@@ -67,9 +101,7 @@ line-height: 4vh;
 margin-left:0;
 margin-right: 0;
 }
-.row div{
-  text-align: center;
-}
+
 footer ul{
   padding-inline-start: 0px;
   line-height: 30px;
