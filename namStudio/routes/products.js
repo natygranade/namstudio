@@ -6,6 +6,6 @@ let productsController = require ('../controllers/productsController.js')
 router.get('/', productsController.collection);
 
 /* GET Detalle de producto. */
-router.get('/collection/:idProduct', productsController.idProduct);
+router.get('/:id', productsController.idProduct);
 
 module.exports = router;
