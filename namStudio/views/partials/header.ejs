@@ -1,40 +1,41 @@
 
 <header>
-  <nav class="container-fluid">
+  <div class=" container-fluid">
+    <div class= "header row">
+      <img class="col-12 col-md-3 col-lg-3" src="../images/logo.png" alt="logo" >
+      <form class="col-6 col-md-6 col-lg-6" action="search.php" method="POST">
+        <div id="search" >
+          <input  type="text" name="search" width=100% placeholder="Busca por nombre o categoría">
+          <button type="submit" ><i class="fas fa-search"></i> </button>
+        </div>
+      </form>
+      <div class="log col-6 col-md-3 col-lg-3">
+        <a href="logIn.ejs">INGRESAR</a>
+        <a href="singUp.ejs">REGISTRARSE</a>
+      </div>
+    </div>
+  </div>
+  
+  <nav class=" container">
     <div class= "row">
-           <img class="col-2" src="../images/logo.png" alt="logo" >
-           <form class="col-8" action="search.php" method="POST">
-             <div>
-               <input type="text" name="search" width=100% placeholder="Busca por nombre o categoría">
-               <button type="submit" ><i class="fas fa-search"></i> </button>
-             </div>
-           </form>
-           <div class="log col-2">
-             <a href="logIn.ejs">INGRESAR</a>
-             <a href="singUp.ejs">REGISTRARSE</a>
-           </div>
+      <div class="col-12 col-md-2 col-lg-2">
+        <a href="/">INICIO</a>
+      </div>
+      <div class="col-12 col-md-2 col-lg-2">
+        <a href="collection">COLECCIÓN</a>
+      </div>
+      <div class="col-12 col-md-2 col-lg-2">
+        <a href="/">TENDENCIA</a>
+      </div>
+      <div class="col-12 col-md-2 col-lg-2">
+        <a href="/">QUIÉNES SOMOS</a>
+      </div>
+      <div class="col-12 col-md-2 col-lg-2">
+        <a href="/">CONTACTO</a>
+      </div>
+      <div class="col-12 col-md-2 col-lg-2">
+        <a href="/">CARRITO</a>
+      </div>
     </div>
-    <div class="container-fluid">
-      <div class= "row">
-    <div class="col-12 col-md-2 col-lg-2">
-      <a href="index.ejs">INICIO</a>
-    </div>
-    <div class="col-12 col-md-2 col-lg-2">
-      <a href="collection.ejs">COLECCIÓN</a>
-    </div>
-    <div class="col-12 col-md-2 col-lg-2">
-      <a href="index.ejs">TENDENCIA</a>
-    </div>
-    <div class="col-12 col-md-2 col-lg-2">
-      <a href="index.ejs">QUIÉNES SOMOS</a>
-    </div>
-    <div class="col-12 col-md-2 col-lg-2">
-      <a href="index.ejs">CONTACTO</a>
-    </div>
-    <div class="col-12 col-md-2 col-lg-2">
-      <a href="index.ejs">CARRITO</a>
-    </div>
-</div>
-</div>
   </nav>
 </header>

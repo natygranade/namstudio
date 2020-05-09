@@ -7,14 +7,15 @@
   <link rel="shortcut icon" type= "image/x-icon" href="/images/nam4x.png">
   <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
   <link rel='stylesheet' href='/stylesheets/index.css'>
-  <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-  
+  <%- include('partials/header') %>
+
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 col-lg-6">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="8000" pause="hover">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block w-100" src="/images/vestido.png" alt="First slide">
@@ -61,34 +62,11 @@
   
   
   
-  <footer class="container-fluid">
-    <div class="footer row"> 
-      <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-        <h4>GRUPO 1</h4> 
-      </div>
-      <div class="col-6 col-sm-6 col-md-3 col-lg-2">    
-        <h5>Integrantes:</h5>
-        <p>Natalia Granadé</br>
-          Agustina Pinheiro</br>
-          Mercedes Cella</p>
-        </div>
-        <div class="col-6 col-sm-6 col-md-3 col-lg-3"> 
-          <ul type="none"> 
-            <li><a href="mailto:info@namstudio.com">info@namstudio.com</a></li>
-            <li><a href="tel:+541112345555">+541112345555</a></li>
-            <li>Monroe 860, CABA</li>
-          </ul>
-        </div>   
-        <div class="col-6 col-sm-6 col-md-4 col-lg-5"> 
-          <p> NAM Studio 2020, Todos los derechos reservados.</p> 
-        </div>     
-      </div> 
-    </footer>      
-    
-    <script src="/javascript/bootstrap.min.js"></script>
-    <script src="/javascript/jquery.js"></script>
-    <script src="/javascript/popper.js"></script>
-    
+<%-include('partials/footer')%>
+<script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
   </html>
   
