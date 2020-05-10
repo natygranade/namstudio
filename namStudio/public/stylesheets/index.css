@@ -10,11 +10,9 @@ body{
    padding-top: 15px;
    padding-bottom: 5px;
  }
- .container-fluid{
-   width:100%;
-   padding-left: 0;
-   padding-right: 0;
-   justify-content: space-between;
+ .container{
+  padding-left: 0;
+  padding-right: 0;
  }
  #search input{
    border: solid 1px #cacaca;
@@ -152,10 +150,21 @@ footer ul{
   line-height: 30px;
 
 }
-@media (min-width: 320px) {
+@media (max-width: 425px) {
   html {
     font-size: 10px;
   }
+  nav{
+    margin-top: 0.5vh;
+  }
+.log{
+  padding-left:0;
+  padding-right: 4px;
+}
+nav div{ 
+background-color: #cacaca;
+border-top: solid 1px white;
+}
 }
 @media (min-width: 576px) {
   html {
