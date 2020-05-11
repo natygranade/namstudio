@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> NAM Studio </title>
+  <link rel="shortcut icon" type= "image/x-icon" href="/images/nam4x.png">
+  <!-- Font Awesome Stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
+  <link rel='stylesheet' href='/stylesheets/cargaproducto.css'>
+  <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <%- include('./partials/header.ejs') %>
+  
+  <div class="form container">
+    <form class="row" method="post" enctype="multipart/form-data">
+      <div class="col-12 col-md-6 col-lg-6">
+        <label for="idArticulo">ID de Articulo</label></br>
+        <input type="text" name="idArticulo"  value="">
+      </br>
+      <label for="nombreDiseno">Nombre de diseño</label></br>
+      <input type="text" name="nombreDiseno" value="">
+    </br>
+    <label for="detalle">Detalle</label></br>
+    <textarea name="detalle"  value=""></textarea>
+  </br>
+  <label for="categorias">Categorias</label></br>
+  <select name="categorias"  value="">
+    <option value= disabled selected>ANIMAL PRINT</option>
+    <option value= disabled selected>ABSTRACTOS</option>
+    <option value= disabled selected>GEOMETRICOS</option>
+    <option value= disabled selected>FLORALES</option> 
+    <option value= disabled selected>FIGURATIVOS</option>
+    <option value= disabled selected>ORNAMENTALES</option>
+  </select>
+</div>
+
+<div class="col-12 col-md-6 col-lg-6">
+  <label for="colorways">Upload colorways</label></br>
+  <input type="file" id="colorways" name="colorways" accept=".jpg, .jpeg, .png">
+  <button>Submit</button>
+  <div class="cws">
+    <img src="../images/products/CON21498NG_CW1.jpg" width="25%">
+    <img src="../images/products/CON21498NG_CW2.jpg" width="25%">
+    <img src="../images/products/CON21498NG_CW3.jpg" width="25%">
+  </div>
+  <label for="exclusivo">Exclusivo</label> 
+  <input type="checkbox" name="exclusivo" value="">
+</br>
+<div id="cargar">
+<button  type="submit">CARGAR</button>
+</div>
+</div> 
+</form>
+
+</div> 
+
+
+<%- include('./partials/footer.ejs') %>
+
+
+
+
+<script src="/javascript/bootstrap.min.js"></script>
+<script src="/javascript/jquery.js"></script>
+<script src="/javascript/popper.js"></script>
+
+</body>
+</html>
