@@ -13,46 +13,7 @@
   <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- transformar a ejs-dejar esta linea-eliminar todo header <%- include('./partials/header.ejs') %> -->
-    <header>
-        <nav class="container-fluid">
-          <div class= "row">
-                 <img class="col-2" src="/images/logo.png" alt="logo" >
-                 <form class="col-8" action="search.php" method="POST">
-                   <div>
-                     <input type="text" name="search" width=100% placeholder="Busca por nombre o categoría">
-                     <button type="submit" ><i class="fas fa-search"></i> </button>
-                   </div>
-                 </form>
-                 <div class="log col-2">
-                   <a href="logIn.ejs">INGRESAR</a>
-                   <a href="signUp.ejs">REGISTRARSE</a>
-                 </div>
-          </div>
-          <div class="container-fluid">
-            <div class= "row">
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">INICIO</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="collection.ejs">COLECCIÓN</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">TENDENCIA</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">QUIÉNES SOMOS</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">CONTACTO</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">CARRITO</a>
-          </div>
-      </div>
-      </div>
-        </nav>
-      </header>
+    <%- include('./partials/header.ejs') %>
       
       <!--carrito - esto claramente será modificado con JS-->
 
@@ -82,13 +43,13 @@
         -->
         <div class="row">
             <div class="col-2">
-                <img class="d-block" src="/images/vestido.png" alt="Ves-1029">
+                <img class="d-block" src="/images/products/CON21498NG_CW1.jpg" alt="Ves-1029">
             </div>
             <div class="col-3">
               Ves-1029
             </div>
             <div class="col-4">
-              Estampa - Vestido bla bla bla
+              CON21498NG
             </div>
             <div class="col-2 precio">
               $ 10.000
@@ -99,13 +60,13 @@
           </div>
           <div class="row">
             <div class="col-2">
-                <img class="d-block" src="/images/mochila.png" alt="Moc-1001">
+                <img class="d-block" src="/images/products/CON21498NG_CW2.jpg" alt="Moc-1001">
             </div>
             <div class="col-3">
               Moc-1001
             </div>
             <div class="col-4">
-              Estampa - Mochila lalalala
+              CON21498NG
             </div>
             <div class="col-2">
               $ 5.000
@@ -116,13 +77,13 @@
           </div>
           <div class="row">
             <div class="col-2">
-                <img class="d-block" src="/images/pollera.png" alt="Pol-1350">
+                <img class="d-block" src="/images/products/CON21498NG_CW3.jpg" alt="Pol-1350">
             </div>
             <div class="col-3">
               Pol-1350
             </div>
             <div class="col-4">
-              Estampa - Pollera chachacha
+              CON21498NG
             </div>
             <div class="col-2">
               $ 140.000
@@ -174,34 +135,12 @@
       })();
       </script>
 
-    <footer class="container-fluid">
-        <div class="footer row"> 
-          <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-            <h4>GRUPO 1</h4> 
-          </div>
-          <div class="col-6 col-sm-6 col-md-3 col-lg-2">    
-            <h5>Integrantes:</h5>
-            <p>Natalia Granadé</br>
-            Agustina Pinheiro</br>
-            Mercedes Cella</p>
-          </div>
-          <div class="col-6 col-sm-6 col-md-3 col-lg-3"> 
-            <ul type="none"> 
-              <li><a href="mailto:info@namstudio.com">info@namstudio.com</a></li>
-              <li><a href="tel:+541112345555">+541112345555</a></li>
-              <li>Monroe 860, CABA</li>
-            </ul>
-          </div>   
-          <div class="col-6 col-sm-6 col-md-4 col-lg-5"> 
-            <p> NAM Studio 2020, Todos los derechos reservados.</p> 
-          </div>     
-        </div> 
-      </footer>      
-      
+<%- include('./partials/footer.ejs') %> 
+
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <!-- transformar a ejs-dejar esta linea-eliminar todo footer <%- include('./partials/footer.ejs') %> -->
+
     </body>
     </html>
     

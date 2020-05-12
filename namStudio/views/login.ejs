@@ -13,51 +13,19 @@
   <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- transformar a ejs-dejar esta linea-eliminar todo header <%- include('./partials/header.ejs') %> -->
-    <header>
-        <nav class="container-fluid">
-          <div class= "row">
-                 <img class="col-2" src="images/logo.png" alt="logo" >
-                 <form class="col-8" action="search.php" method="POST">
-                   <div>
-                     <input type="text" name="search" width=100% placeholder="Busca por nombre o categoría">
-                     <button type="submit" ><i class="fas fa-search"></i> </button>
-                   </div>
-                 </form>
-                 <div class="log col-2">
-                   <a href="logIn.ejs">INGRESAR</a>
-                   <a href="signUp.ejs">REGISTRARSE</a>
-                 </div>
-          </div>
-          <div class="container-fluid">
-            <div class= "row">
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">INICIO</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="collection.ejs">COLECCIÓN</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">TENDENCIA</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">QUIÉNES SOMOS</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">CONTACTO</a>
-          </div>
-          <div class="col-12 col-md-2 col-lg-2">
-            <a href="index.ejs">CARRITO</a>
-          </div>
-      </div>
-      </div>
-        </nav>
-      </header>
+ <%- include('./partials/header.ejs') %> 
       
       <!--login-->
       <div class="container">
-        <p class="titulo">INICIAR SESION</p>
-       <div class="container login">
+       <div class="row">
+         <div class="col-12 titulo">
+           INICIAR SESION
+          </div>
+        </div> 
+      </div>
+       <div class="container">
+        <div class="row">
+          <div class="login col-12">
         <form class="px-4 py-3">
           <div class="form-group">
             <label for="exampleDropdownFormEmail1">Email</label>
@@ -67,6 +35,8 @@
             <label for="exampleDropdownFormPassword1">Contraseña</label>
             <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña">
           </div>
+        </div>
+        <div class="col-12">
           <div class="form-group">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="dropdownCheck">
@@ -82,35 +52,14 @@
         <a class="dropdown-item" href="#">Olvidó su contraeña?</a>
       </div>
     </div>
+    </div>
     
-    <footer class="container-fluid">
-        <div class="footer row"> 
-          <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-            <h4>GRUPO 1</h4> 
-          </div>
-          <div class="col-6 col-sm-6 col-md-3 col-lg-2">    
-            <h5>Integrantes:</h5>
-            <p>Natalia Granadé</br>
-            Agustina Pinheiro</br>
-            Mercedes Cella</p>
-          </div>
-          <div class="col-6 col-sm-6 col-md-3 col-lg-3"> 
-            <ul type="none"> 
-              <li><a href="mailto:info@namstudio.com">info@namstudio.com</a></li>
-              <li><a href="tel:+541112345555">+541112345555</a></li>
-              <li>Monroe 860, CABA</li>
-            </ul>
-          </div>   
-          <div class="col-6 col-sm-6 col-md-4 col-lg-5"> 
-            <p> NAM Studio 2020, Todos los derechos reservados.</p> 
-          </div>     
-        </div> 
-      </footer>      
+    <%- include('./partials/footer.ejs') %>     
       
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <!-- transformar a ejs-dejar esta linea-eliminar todo footer <%- include('./partials/footer.ejs') %> -->
+
     </body>
     </html>
     
