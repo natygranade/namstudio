@@ -60,7 +60,7 @@ header{
 }
 #search input{
   border: solid 1px #cacaca;
-  color:#666666
+  color:#666666;
   width:60%;
   border-radius: 5px;
 }
