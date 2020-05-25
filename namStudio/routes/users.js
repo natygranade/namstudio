@@ -9,10 +9,15 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET login page. */
-router.get('/logIn', usersController.logIn);
+router.get('/login', usersController.login);
 
-router.get('/signUp', usersController.signUp);
+router.get('/signup', usersController.signup);
 
+router.post('/signup', usersController.create);
+
+router.patch('/signup', usersController.edit);
+
+router.delete('/signup', usersController.delete);
 
 
 module.exports = router;
