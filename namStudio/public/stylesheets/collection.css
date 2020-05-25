@@ -4,6 +4,9 @@ body{
      font-family: roboto;
      color: #666666;
      text-align: center;
+     background-image: url(/images/back.jpg);
+     background-size: 100%;
+     background-repeat: no-repeat;
    }
    
    header{

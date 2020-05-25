@@ -17,7 +17,7 @@ let productsController= {
             design: req.body.design,
             detail: req.body.detail,
             categories: req.body.categories,
-            colorways: req.files[0].filename,
+            colorways: [req.files[0].filename, req.files[1].filename,req.files[2].filename],
             exclusive: req.body.exclusive
         }
                   
