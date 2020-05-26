@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
+const session= require('express-session')
 
 app.use(function(req,res,next){
   let parts = req.url.split('/')
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: "nuestro msj secreto"}))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
