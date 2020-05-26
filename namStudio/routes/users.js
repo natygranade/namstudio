@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
 /* GET login page. */
 router.get('/login', usersController.login);
 
+router.post('/login', usersController.processLogin);
+
 router.get('/signup', usersController.signup);
 
 router.post('/signup', usersController.create);
