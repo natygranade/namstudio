@@ -17,19 +17,29 @@
 
       
       <!--signup-->
-
+      <% if (typeof errors != 'undefined') {%>
+        <p style = 'color: red'>Error</p>
+      <ul>
+        <%for (let i=0; i < erros.lenght; i++) { %>
+          <li>
+            <%=errors[i].msg%>
+          </li>
+        <% } %>
+      </ul>
+      <% } %>
+      
       <div class= "container">
         <div class="row titulo">
         <p class="titulo">REGISTRARSE</p>
       </div>
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate action = "/users/signup" method ="POST">
         <div class="form-row">
             <div class="col-md-6 mb-3">
              <label for="validationCustomUsername">Email</label>
                <div class="input-group">
                  <div class="input-group-prepend">
                    </div>
-                  <input type="email" class="form-control" id="validationCustomUsername" placeholder="email@ejemplo.com" aria-describedby="inputGroupPrepend" required>
+                  <input type="email" name ="email" class="form-control" id="validationCustomUsername" placeholder="email@ejemplo.com" aria-describedby="inputGroupPrepend" required >
                  <div class="invalid-feedback">
                    Por favor ingrese un email valido.
                   </div>
@@ -40,7 +50,7 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       </div>
-                     <input type="text" class="form-control" id="validationCustomUsername" placeholder="contraseña" aria-describedby="inputGroupPrepend" required>
+                     <input type="text" name ="contraseña" class="form-control" id="validationCustomUsername" placeholder="contraseña" aria-describedby="inputGroupPrepend" required >
                     <div class="invalid-feedback">
                       Por favor use entre 6 y 20 caracteres.
                      </div>
@@ -50,7 +60,7 @@
         <div class="form-row">
           <div class="col-md-12 mb-3">
             <label for="validationCustom01">Nombre y Apellido</label>
-            <input type="text" class="form-control" id="validationCustom01" value="   " required >
+            <input type="text" name ="nombre" class="form-control" id="validationCustom01" value="   " required  >
             <div class="valid-feedback">
               Correcto!
             </div>
@@ -59,7 +69,7 @@
         <div class="form-row">
           <div class="col-md-12 mb-3">
             <label for="validationCustom01">Razon Social</label>
-            <input type="text" class="form-control" id="validationCustom01" value="   " required >
+            <input type="text" name ="razon" class="form-control" id="validationCustom01" value="   " required  >
             <div class="valid-feedback">
               Correcto!
             </div>
@@ -68,9 +78,9 @@
         
         <div class="form-row">
           
-          <div class="col-md-6 mb-3">
+         <div class="col-md-6 mb-3">
             <label for="validationCustom04">Provincia</label>
-            <select class="custom-select" id="validationCustom04" required>
+            <select name ="provincia" class="custom-select" id="validationCustom04" required >
               <option selected disabled value="">Seleccione...</option>
               <option>...</option>
             </select>
@@ -80,14 +90,14 @@
           </div>
           <div class="col-md-2 mb-2">
             <label for="validationCustom05">Código Postal</label>
-            <input type="text" class="form-control" id="validationCustom05" required>
+            <input type="text" name ="codPos" class="form-control" id="validationCustom05" required >
             <div class="invalid-feedback">
               Por favor indique el codigo postal.
             </div>
           </div>
           <div class="col-md-4 mb-3">
             <label for="validationCustom03">Teléfono</label>
-            <input type="number" class="form-control" placeholder="(+54 9 11) 1234-5566 " id="validationCustom03" required>
+            <input type="number" name ="telefono" class="form-control" placeholder="(+54 9 11) 1234-5566 " id="validationCustom03" required  > 
             <div class="invalid-feedback">
               Por favor agregue un teléfono con codigo de area.
             </div>
