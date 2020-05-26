@@ -16,6 +16,17 @@
  <%- include('./partials/header.ejs') %> 
       
       <!--login-->
+      <% if (typeof errors != 'undefined') {%>
+        <p style = 'color: red'>Error</p>
+      <ul>
+        <%for (let i=0; i < erros.lenght; i++) { %>
+          <li>
+            <%=errors[i].msg%>
+          </li>
+        <% } %>
+      </ul>
+      <% } %>
+
       <div class="container">
        <div class="row">
          <div class="col-12 titulo">
