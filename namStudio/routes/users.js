@@ -12,11 +12,15 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET login page. */
-router.get('/logIn', usersController.logIn);
+router.get('/login', usersController.logIn);
 
-router.get('/signUp', usersController.signUp);
+router.get('/signup', usersController.signUp);
 
-router.post('/signUp', signupValidator, signupMiddleware, usersController.processSignup)
+router.post('/signUp', signupValidator, signupMiddleware, usersController.create)
+
+router.patch('/signup', usersController.edit);
+
+router.delete('/signup', usersController.delete);
 
 router.post('/logIn', loginValidator, loginMiddleware, usersController.processLogin)
 
