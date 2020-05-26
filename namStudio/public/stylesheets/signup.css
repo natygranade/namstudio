@@ -15,8 +15,8 @@ body{
    padding-bottom: 5px;
  }
  .container{
-  padding-left: 0;
-  padding-right: 0;
+
+  padding: 1vh 0;
  }
  #search input{
    border: solid 1px #cacaca;
@@ -114,6 +114,9 @@ footer {
   padding-top: 2vh;
 line-height: 4vh;
   align-items: center;
+  position:absolute;
+  bottom: 0;
+
 }
 .row{
 margin-left:0;
@@ -168,3 +171,6 @@ border-top: solid 1px white;
     color: #666666;
    }
   
+   .form-row{
+padding: 10vh auto;
+   }
