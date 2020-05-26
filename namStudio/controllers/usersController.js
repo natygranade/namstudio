@@ -1,15 +1,40 @@
 let fs = require('fs');
+const { check, validationResult, body } = require('express-validator'); 
+
 let usersController = {
- 
-        
-    signup: function( req, res){
-        res.render('signUp')
-    },
+     
+    
     login: function( req, res){
-        res.render('logIn')
+        res.render('login')
     },
+    processLogin: function( req, res){
+        let errors = validationResult (req);
+        if (errors.isEmpty ()) {
+
+            let users;
+            let usersJson = fs.readFileSync ('./data/users/users.json', {encoding: 'utf-8'})
+            if(usersJson == ''){
+                users = []
+            } else {
+                users = JSON.parse(usersJson)
+            }
+            for (let i = 0; i < users.length; i++){
+                if (users[i].email == req.body.email) {
+                    let userLogIn = users[i];
+                }
+            }
+        } else {
+            return res.render ('login', {errors: errors.errors});
+        }
+        res.render('login')
+    },
+
+    signup: function (req, res){
+        res.render('signup')
+    },
+
     create: function (req,res){
-        let user = {
+         let user = {
             id: req.body.id,
             email: req.body.email,
             contraseña: req.body.contraseña,
@@ -18,9 +43,9 @@ let usersController = {
             provincia: req.body.provincia,
             codPos: req.body.codPos,
             telefono: req.body.telefono,
-        }
+            }
             let users;
-            let usersJson = fs.readFileSync (path.resolve('data','users', 'users.json'), {encoding: 'utf-8'})
+            let usersJson = fs.readFileSync ('./data/users/users.json', {encoding: 'utf-8'})
             if(usersJson == ''){
                 users = []
             } else{
@@ -28,11 +53,11 @@ let usersController = {
             }
             users.push(user);
             usersJson = JSON.stringify(users);
-            fs.writeFileSync(path.resolve('data','users', 'users.json'),usersJson)
+            fs.writeFileSync('./data/users/users.json', usersJson)
            
-             res.redirect('index')
+             res.redirect('/')
         },
-    edit: function (req,res){
+    edit: function (req,res,next){
             let users;    
             let editUser = users.findIndex(function (user) {
                 return user.id == req.params.id
@@ -56,7 +81,7 @@ let usersController = {
                
                 res.status(200).send('')
             },
-    delete: function (req,res){
+    delete: function (req,res,next){
                 
                 let index = users.findIndex(function (user) {
                 return user.id == req.params.id
