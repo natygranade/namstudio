@@ -14,11 +14,20 @@ if (parts[1].startsWith('data')){
 }
 next()
 })
-
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+     secure: false,
+     maxAge: 86400
+   }
+}))
 // Requerir las rutas
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let  productsRouter = require('./routes/products')
+const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware')
 
 
 // Servidor
@@ -33,7 +42,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: "nuestro msj secreto"}))
+
+app.use(rememberMeMiddleware)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -43,7 +53,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+//error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
