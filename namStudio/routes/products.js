@@ -4,7 +4,7 @@ let productsController = require ('../controllers/productsController.js')
 let productMiddleware = require ('../middlewares/productMiddleware')
 let productValidator = require('../middlewares/validators/productValidator')
 const multer = require ('multer')
-const path = require('path')
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {

@@ -7,7 +7,7 @@ function signupMiddleware (req, res, next){
     if (errors.isEmpty()){
 		next()
 }else{
-	return res.render('signUp',{errors: errors.errors})
+	return res.render('signup',{errors: errors.errors})
 }
 }
 
