@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
 const session= require('express-session')
-
+const methodOverride = require('method-override')
 app.use(function(req,res,next){
   let parts = req.url.split('/')
 
@@ -23,6 +23,8 @@ app.use(session({
      maxAge: 86400
    }
 }))
+app.use(methodOverride('_method'))
+
 // Requerir las rutas
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
