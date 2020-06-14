@@ -1,7 +1,8 @@
 const fs= require ('fs')
 const multer = require ('multer')
 const path = require('path')
-
+let db = require('../db/models')
+const { Op } = require("sequelize");
 
 let productsController= {
     collection: function(req,res){
