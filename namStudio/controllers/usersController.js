@@ -11,6 +11,9 @@ let usersController= {
         res.render('login')
     },
     create:  function (req,res){
+        let errors = validationResult(req)
+        if (errors.isEmpty()){
+
         let user = {
             email:req.body.email,
             name: req.body.name,
@@ -30,7 +33,9 @@ let usersController= {
         fs.writeFileSync(path.resolve('data','users', 'users.json'),JSON.stringify(users))
         
         res.redirect('/')
-        
+        }else{
+	return res.render('signup',{errors: errors.errors})
+}
     },
     processLogin: function (req,res){
         let errors = validationResult(req)
@@ -50,7 +55,7 @@ let usersController= {
                 
                 if (valid) {
                     req.session.userLoged = userToLog.email
-                    console.log('login', req.session)
+                 
                     return res.send('logueado '+ req.session.userLoged )
                 } else {
                     return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 
@@ -63,7 +68,7 @@ let usersController= {
         
     },
     check: function (req,res){
-        console.log(req.session)
+      
         if(req.session.userLoged){
         res.send(req.session.userLoged)
         } else{

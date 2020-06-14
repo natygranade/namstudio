@@ -2,7 +2,6 @@ const fs = require ('fs')
 const session= require('express-session')
 
 module.exports =  function rememberMeMiddleware (req,res,next){
-    console.log('here', req.session)
     
     if(req.cookies.rememberMe != undefined && req.session.userLoged == undefined){
         let users ;
