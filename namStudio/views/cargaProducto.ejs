@@ -22,21 +22,17 @@
         <label for="idArticle">ID de Articulo</label></br>
         <input type="text" name="idArticle" placeholder="Id de 6 números">
       </br>
-      <label for="design">Nombre de diseño</label></br>
-      <input type="text" placeholder="Nombre del diseño" name="design">
+      <label for="name">Nombre de diseño</label></br>
+      <input type="text" placeholder="Nombre del diseño" name="name">
     </br>
     <label for="detail">Detalle</label></br>
     <textarea name="detail" placeholder="Escribir palabras clave"></textarea>
   </br>
-  <label for="categories">Categorias</label></br>
-  <select name="categories" >
-    <option value= "animal" selected>ANIMAL PRINT</option>
-    <option value= "abstract" selected>ABSTRACTOS</option>
-    <option value= "geometric" selected>GEOMETRICOS</option>
-    <option value= "floral" selected>FLORALES</option> 
-    <option value= "figurative" selected>FIGURATIVOS</option>
-    <option value= "ornamental" selected>ORNAMENTALES</option>
-    <option value= "tropical" selected>TROPICALES</option>
+  <label for="category">Categorias</label></br>
+  <select name="category" >
+    <%for(let i=0;i<categories.length; i++){%>
+    <option value= "<%=categories[i].id%>" selected><%=categories[i].name%></option>
+<%}%>
   </select>
 </div>
 
