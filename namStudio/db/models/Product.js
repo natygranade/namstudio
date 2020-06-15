@@ -16,9 +16,9 @@ module.exports = (sequelize, type)=>{
             type: type.STRING(200),
             allowNull: true
         },
-        colorways:{
-            type: type.BLOB('long'),
-            allowNull: false
+        colorways:{ 
+         type: type.ARRAY(type.STRING),
+            allowNull: true
         },
         exclusive:{
             type: type.STRING,
@@ -26,18 +26,25 @@ module.exports = (sequelize, type)=>{
         },
         size:{
             type: type.STRING,
-            allowNull: false
+            allowNull: true
         },
         price:{
             type: type.DECIMAL(3,2),
+            allowNull: true
+        },
+        category_id: {
+type: type.INTEGER
+        },
+        created_at: {
+            type: type.DATE,
+            defaultValue: 'CURRENT_TIMESTAMP',
             allowNull: false
-        },
-        createdAt:{
-            type: type.DATE
-        },
-        updatedAt:{
-            type: type.DATE
-        },
+          },
+          updated_at: {
+            type: type.DATE,
+            defaultValue: 'CURRENT_TIMESTAMP',
+            allowNull: false
+          }
         
     },{
         underscored: true,

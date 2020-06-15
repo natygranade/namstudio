@@ -23,8 +23,8 @@ module.exports = (sequelize, type)=>{
         
     })
     
-    Category.associate = function(models){
-        Category.hasOne( models.User,{
+    Administrator.associate = function(models){
+        Administrator.hasOne( models.User,{
             as: "user",
             foreignKey: "user_id"
             

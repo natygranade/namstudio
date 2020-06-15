@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, type)=>{
-    const Product = sequelize.define("Product",{
+    const Category = sequelize.define("Category",{
         id:{
             type: type.INTEGER,
             primaryKey: true,

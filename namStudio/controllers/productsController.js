@@ -6,41 +6,39 @@ const { Op } = require("sequelize");
 
 let productsController= {
     collection: function(req,res){
-        res.render('collection')
+        db.Product.findAll()
+        .then(products=>{
+            res.render('/', {products:products})
+        })
     },
     cargaProducto:  function(req,res,next){
-        res.render('cargaProducto')
+        db.Category.findAll()
+        .then(categories=>{
+            res.render('cargaProducto', {categories:categories})
+        })
+
     },
     create: function (req,res,next){
-                
-        let product = {
-            idArticle: req.body.idArticle,
-            design: req.body.design,
+        db.Product.create({
+            id: req.body.id,
+            name: req.body.name,
             detail: req.body.detail,
-            categories: req.body.categories,
-            colorways: [req.files[0].filename, req.files[1].filename,req.files[2].filename],
-            exclusive: req.body.exclusive
-        }
-                  
-            let products;
-            let productsFile = fs.readFileSync (path.resolve('data','products', 'products.json'), {encoding: 'utf-8'})
-            if(productsFile == ''){
-                products = []
-            } else{
-                products = JSON.parse(productsFile)
-            }
-            products.push(product)
-            fs.writeFileSync(path.resolve('data','products', 'products.json'),JSON.stringify(products))
-           
-             res.redirect('cargaProducto')
-        },
-        carrito:  function(req,res){
-            res.render('carrito')
-        },
-        idProduct: function (req, res, next) {
-            res.render('idProduct',{id:req.params.id})
-            
-        }
+            category_id: req.body.category,
+            colorways: [req.files[0].filename, req.files[1].filename,req.files[2].filename], 
+            exclusive: req.body.exclusive,
+            size: req.body.size,
+            price: req.body.price
+        })
+     
+        res.redirect('cargaProducto')
+    },
+    carrito:  function(req,res){
+        res.render('carrito')
+    },
+    idProduct: function (req, res, next) {
+        res.render('idProduct',{id:req.params.id})
+        
     }
-    
-    module.exports = productsController;
+}
+
+module.exports = productsController;
