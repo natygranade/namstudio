@@ -2,9 +2,9 @@ const {check, validationResult, body} = require ('express-validator')
 const fs= require ('fs')
 const path = require('path')
 
-let signupValidator = [
+let signupMiddleware = [
     check ('email').isEmail().withMessage('Completar mail'),
-    check('name').isLength().withMessage('Completar nombre y apellido'),
+    check('name').isLength({min:1}).withMessage('Completar nombre y apellido'),
     check ('password').isLength({min: 4, max:8}).withMessage('Completar contraseña'),
     body('email').custom(function(value){
   
@@ -21,8 +21,8 @@ let signupValidator = [
             }
         }
         return true
-    }).withMessage('Usuario ya registrado'),
+    }).withMessage('Usuario ya registrado')
     ]
 
 
-    module.exports = signupValidator
+    module.exports = signupMiddleware
