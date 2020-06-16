@@ -25,7 +25,7 @@ router.get('/', productsController.collection);
 router.get('/cargaProducto',  productsController.cargaProducto);
 
 /* POST  carga de producto */
-router.post('/cargaProducto', productMiddleware, productValidator, upload.array('colorways', 3), productsController.create);
+router.post('/cargaProducto', upload.array('colorways', 3),productValidator, productMiddleware,  productsController.create);
 
 /* GET carrito de productos. */
 router.get('/carrito', productsController.carrito);

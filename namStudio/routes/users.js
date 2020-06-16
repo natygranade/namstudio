@@ -2,7 +2,21 @@ var express = require('express');
 var router = express.Router();
 let usersController = require ('../controllers/usersController.js')
 let loginMiddleware = require ('../middlewares/loginMiddleware')
-let signupValidator = require('../middlewares/validators/signupValidator')
+let signupMiddleware = require('../middlewares/signupMiddleware')
+const multer = require ('multer')
+const path = require('path')
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'data/avatar')
+  },
+  filename: function (req, file, cb) {
+    console.log(file)
+    cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
+  }
+})
+ 
+var upload = multer({ storage: storage })
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -12,13 +26,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/signup', usersController.signup);
 
-router.post('/signup', signupValidator, usersController.create)
+router.post('/signup',upload.any(), signupMiddleware,  usersController.create);
 
 router.get('/login', usersController.login);
 
 router.post('/login',loginMiddleware, usersController.processLogin)
 
-router.get('/check', usersController.check )
+router.get('/check', usersController.check)
 
 router.patch('/signup', usersController.edit);
 
