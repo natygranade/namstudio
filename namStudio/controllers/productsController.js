@@ -1,8 +1,10 @@
 const fs= require ('fs')
 const multer = require ('multer')
+let express = require('express');
 const path = require('path')
 let db = require('../db/models')
 const { Op } = require("sequelize");
+const {check, validationResult, body} = require ('express-validator')
 
 let productsController= {
     collection: function(req,res){
@@ -19,6 +21,10 @@ let productsController= {
 
     },
     create: function (req,res,next){
+        let errors = validationResult(req)
+
+        if (errors.isEmpty()){
+
         db.Product.create({
             id: req.body.id,
             name: req.body.name,
@@ -31,6 +37,9 @@ let productsController= {
         })
      
         res.redirect('cargaProducto')
+    }else{
+        return res.render('cargaProducto',{errors: errors.errors})
+    }
     },
     carrito:  function(req,res){
         res.render('carrito')

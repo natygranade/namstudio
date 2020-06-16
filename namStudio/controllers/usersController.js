@@ -1,7 +1,9 @@
 const fs= require ('fs')
 const path = require('path')
+let express = require('express');
 const bcrypt = require('bcrypt')
 const {check, validationResult, body} = require ('express-validator')
+
 
 let usersController= {
     signup: function( req, res, next){
@@ -10,8 +12,10 @@ let usersController= {
     login: function( req, res){
         res.render('login')
     },
-    create:  function (req,res){
+    create:  function (req,res, next){
+        console.log(validationResult(req))
         let errors = validationResult(req)
+
         if (errors.isEmpty()){
 
         let user = {
@@ -19,9 +23,10 @@ let usersController= {
             name: req.body.name,
             phone: req.body.phone,
             password: bcrypt.hashSync(req.body.password, 10),
+            avatar: req.files[0].filename,
             terms: req.body.terms
         }
-        
+
         let users;
         let usersFile = fs.readFileSync (path.resolve('data','users', 'users.json'), {encoding: 'utf-8'})
         if(usersFile == ''){
