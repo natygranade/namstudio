@@ -104,7 +104,9 @@ a:hover{
 nav{
   padding: 0.2vh 0;
 }
-
+.form{
+  margin: 2vh auto;
+}
 
 footer {
   background-color:  #cacaca;
@@ -114,9 +116,6 @@ footer {
   padding-top: 2vh;
 line-height: 4vh;
   align-items: center;
-  position:absolute;
-  bottom: 0;
-
 }
 .row{
 margin-left:0;
