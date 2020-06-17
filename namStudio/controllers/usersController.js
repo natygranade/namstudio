@@ -13,7 +13,6 @@ let usersController= {
         res.render('login')
     },
     create:  function (req,res, next){
-        console.log(validationResult(req))
         let errors = validationResult(req)
 
         if (errors.isEmpty()){

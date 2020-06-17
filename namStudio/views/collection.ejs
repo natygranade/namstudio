@@ -30,11 +30,17 @@
       <div class="product col-10">
         <div class="container">
           <div class="row">
-  <%- include('./partials/item.ejs') %>
- 
-  <%- include('./partials/item.ejs') %>
-  <%- include('./partials/item.ejs') %>
-  <%- include('./partials/item.ejs') %>
+            <%for (let i=0; i< products.length; i++){%>
+                   <div class="col-12 col-sm-4 col-md-3 col-lg-3">
+   
+      <img  src="/data/cws/<%= products[i].cw1%>">
+  
+<a href="/collection/<%= products[i].id%>" class="btn btn-secondary">VER</a>
+<a href="carrito" class="btn btn-secondary">AGREGAR AL CARRITO</a>
+</div>
+           <% } %>
+
+
 </div>
 </div>
 </div>

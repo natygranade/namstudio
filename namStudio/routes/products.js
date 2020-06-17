@@ -1,7 +1,6 @@
 let express = require('express');
 let router = express.Router();
 let productsController = require ('../controllers/productsController.js')
-let productMiddleware = require ('../middlewares/productMiddleware')
 let productValidator = require('../middlewares/validators/productValidator')
 const multer = require ('multer')
 const path = require('path')
@@ -25,7 +24,7 @@ router.get('/', productsController.collection);
 router.get('/cargaProducto',  productsController.cargaProducto);
 
 /* POST  carga de producto */
-router.post('/cargaProducto', upload.array('colorways', 3),productValidator, productMiddleware,  productsController.create);
+router.post('/cargaProducto', upload.any(),productValidator,  productsController.create);
 
 /* GET carrito de productos. */
 router.get('/carrito', productsController.carrito);

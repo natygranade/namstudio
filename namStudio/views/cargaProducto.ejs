@@ -17,11 +17,9 @@
   <%- include('./partials/header.ejs') %>
   
   <div class="form container">
-    <form class="row" method="post" action= "/collection/cargaProducto" enctype="multipart/form-data">
+    <form class="row" method="POST" action= "/collection/cargaProducto" enctype="multipart/form-data">
       <div class="col-12 col-md-6 col-lg-6">
-        <label for="idArticle">ID de Articulo</label></br>
-        <input type="text" name="idArticle" placeholder="Id de 6 números">
-      </br>
+  
       <label for="name">Nombre de diseño</label></br>
       <input type="text" placeholder="Nombre del diseño" name="name">
     </br>
@@ -54,13 +52,15 @@
 </div> 
 </form>
 </div> 
+
 <%if (typeof errors != 'undefined'){%>
 <ul type= "none">
   <% for (let i=0; i <errors.length; i++){%>
     <li><%= errors[i].msg %></li>
   <%}%>
 </ul>
-<%} else{ " "}%>
+<%} %>
+
 <%- include('./partials/footer.ejs') %>
 
 <script src="/javascript/bootstrap.min.js"></script>

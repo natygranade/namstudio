@@ -7,7 +7,7 @@ const { Op } = require("sequelize");
 const {check, validationResult, body} = require ('express-validator')
 
 let productsController= {
-    collection: function(req,res){
+    collection: function(req,res,next){
         db.Product.findAll()
         .then(products=>{
             res.render('/', {products:products})
@@ -16,7 +16,7 @@ let productsController= {
     cargaProducto:  function(req,res,next){
         db.Category.findAll()
         .then(categories=>{
-            res.render('cargaProducto', {categories:categories})
+          res.render('cargaProducto', {categories:categories})
         })
 
     },
@@ -29,8 +29,10 @@ let productsController= {
             id: req.body.id,
             name: req.body.name,
             detail: req.body.detail,
-            category_id: req.body.category,
-            colorways: [req.files[0].filename, req.files[1].filename,req.files[2].filename], 
+            categoryId: req.body.category,
+            cw1: req.files[0].filename,
+            cw2: req.files[1].filename,
+            cw3: req.files[2].filename, 
             exclusive: req.body.exclusive,
             size: req.body.size,
             price: req.body.price

@@ -7,17 +7,25 @@ module.exports = (sequelize, type)=>{
             autoIncrement: true,
             allowNull: false
         },
-          name:{
+        name:{
             type: type.STRING(12),
             allowNull: false
         },
-      
+        
         detail:{
             type: type.STRING(200),
             allowNull: true
         },
-        colorways:{ 
-         type: type.ARRAY(type.STRING),
+        cw1:{ 
+            type: type.STRING,
+            allowNull: true
+        },
+        cw2:{ 
+            type: type.STRING,
+            allowNull: true
+        },
+        cw3:{ 
+            type: type.STRING,
             allowNull: true
         },
         exclusive:{
@@ -32,34 +40,35 @@ module.exports = (sequelize, type)=>{
             type: type.DECIMAL(3,2),
             allowNull: true
         },
-        category_id: {
-type: type.INTEGER
+        categoryId: {
+            type: type.INTEGER
         },
-        created_at: {
+        createdAt: {
             type: type.DATE,
             defaultValue: 'CURRENT_TIMESTAMP',
             allowNull: false
-          },
-          updated_at: {
+        },
+        updatedAt: {
             type: type.DATE,
             defaultValue: 'CURRENT_TIMESTAMP',
             allowNull: false
-          }
+        }
         
     },{
         underscored: true,
         tableName: 'products',
         timestamps: true,
         createdAt: 'created_at',
-        updatedAt: 'updated_at'
-       
+        updatedAt: 'updated_at',
+        categoryId: 'category_id'
+        
     })
-   
+    
     Product.associate = function(models){
         Product.belongsTo( models.Category,{
             as: "category",
             foreignKey: "category_id"
-
+            
         })
     }
     Product.associate = function(models){
