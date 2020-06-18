@@ -52,8 +52,7 @@ let productsController= {
                 association:"category"}]
         })
         .then(product=>{
-          res.json(product)
-            //  res.render('idProduct',{product:product})
+      res.render('idProduct',{product:product})
         })  
     },
 }

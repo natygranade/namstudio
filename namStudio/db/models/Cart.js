@@ -45,15 +45,13 @@ module.exports = (sequelize, type)=>{
             foreignKey: "customer_id"
             
         })
-    }
-    Cart.associate = function(models){
+
         Cart.hasOne( models.Payment,{
             as: "payment",
             foreignKey: "payment_id"
             
         })
-    }
-    Cart.associate = function(models){
+ 
         Cart.belongsToMany( models.Product,{
             as: "products",
             through: "products_carts",
