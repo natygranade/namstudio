@@ -1,0 +1,1 @@
+SELECT * FROM nam_studio.products;
