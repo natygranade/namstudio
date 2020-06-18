@@ -1,0 +1,24 @@
+﻿NamStudio – Retrospectiva Sprint4
+1.	Comenzar a hacer: 
+a.	distribuir las tareas en base a las posibilidades de cada una,
+b.	armar un plan B por si alguna no llega con alguna tarea,
+b.	revisar como va quedando el sitio para acomodar cosas,
+c.	hacer un listado de los pendientes de otros sprints.
+
+2.	Hacer más: 
+a.	detallar más el tablero de trello
+b.	investigar más en la web los errores que vamos teniendo,
+c.	seguir animandonos a probar más cosas, no tenerle miedo a los sistemas.
+
+3.	Continuar haciendo: 
+a.	organización del equipo: reuniones periódicas
+b.	seguimientos x whatsapp cada uno o dos días para evitar retrasarnos,
+
+4.	Hacer menos: 
+a.	escribir código sin ir probando si funciona,
+
+5.	Dejar de hacer: 
+a.	esperar a que los profes nos respondan para continuar,
+b.	quedarnos un poco atrás, no seguir el ritmo al resto,
+c.	no estar al dia con la teoría nos retrasa los sprints!!
+
