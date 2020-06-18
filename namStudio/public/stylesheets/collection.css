@@ -114,7 +114,7 @@ ul{
 }
   li{
     padding-left: 0;
-    text-align:left;
+    text-align:center;
     width:100%;
     background-color: #cacaca;
     border-bottom: solid 2px white;
@@ -159,8 +159,7 @@ ul{
     align-items: center;
   }
   .row{
-  margin-left:0;
-  margin-right: 0;
+  margin: 15px 0;
   }
   
   footer ul{
@@ -200,3 +199,13 @@ ul{
       font-size: 20px;
     }
   }
+
+  body img{
+      object-fit: cover;
+          width:100%;
+      height:100%;
+    }
+  
+    .dsn{
+      padding:20px 15px;
+    }

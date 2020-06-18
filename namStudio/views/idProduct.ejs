@@ -11,13 +11,14 @@
 </head>
 <body>
   <%- include('partials/header') %>
-  <div style="background: url(/data/cws/colorways-1590376485082.jpg)" id="cw1"></div>
+
+
   <div class="container">
     <div class="row">
   
       <div id="carousel" class=" col-12 col-md-6 col-lg-6">
-        <div style="background: url(/data/cws/colorways-1590376485082.jpg); background-size: 40%"  id="cw1">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="4000" pause="hover">
+        <div style="background: url(/data/cws/<%=product.cw1%>); background-size: 40%"  id="cw1"></div>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2000" pause="hover">
           <div class="carousel-inner">
           
             <div class="carousel-item active">
@@ -46,7 +47,7 @@
       </div>
       </div>
       <div class="detalle col-12 col-md-6 col-lg-3">
-        <h2>DSN#AP21035JL</h2>
+        <h2>DSN#<%=product.name%></h2>
         
         <!-- Zoom -->
         
@@ -61,15 +62,15 @@
         
         <!-- Colorways -->
         <ul type="none">
-          <li><img src="../images/AP21035JL32X32.jpg" width="40%"><a href="#"> CW 1</a></li>
-          <li><img src="../images/AP21035JL32X32.jpg" width="40%"><a href="#"> CW 2</a></li>
-          <li><img src="../images/AP21035JL32X32.jpg" width="40%"><a href="#"> CW 3</a></li>
+          <li><img src="/data/cws/<%=product.cw1%>" width="40%"><a href="#"> CW 1</a></li>
+          <li><img src="/data/cws/<%=product.cw2%>" width="40%"><a href="#"> CW 2</a></li>
+          <li><img src="/data/cws/<%=product.cw3%>" width="40%"><a href="#"> CW 3</a></li>
         </ul>
         <div id="detalle">
           <h6>TAMAÑO REAL (cm):</h6>
-          <p>32x64</p>
+          <p><%=product.size%></p>
           <h6>CATEGORÍA:</h6>
-          <p>Animal Print</p>
+          <p><%=product.category.name%></p>
         </div>
       </div>
       

@@ -10,7 +10,7 @@ let productsController= {
     collection: function(req,res,next){
         db.Product.findAll()
         .then(products=>{
-            res.render('/', {products:products})
+          res.render('collection', {products:products})
         })
     },
     cargaProducto:  function(req,res,next){
@@ -29,7 +29,7 @@ let productsController= {
             id: req.body.id,
             name: req.body.name,
             detail: req.body.detail,
-            categoryId: req.body.category,
+            category_id: req.body.category,
             cw1: req.files[0].filename,
             cw2: req.files[1].filename,
             cw3: req.files[2].filename, 
@@ -47,9 +47,15 @@ let productsController= {
         res.render('carrito')
     },
     idProduct: function (req, res, next) {
-        res.render('idProduct',{id:req.params.id})
-        
-    }
+        db.Product.findByPk(req.params.id,{
+            include: [{
+                association:"category"}]
+        })
+        .then(product=>{
+          res.json(product)
+            //  res.render('idProduct',{product:product})
+        })  
+    },
 }
 
 module.exports = productsController;

@@ -162,6 +162,9 @@ border-top: solid 1px white;
   }
 }
 
+form.col-12.col-md-3.col-lg-3{
+  margin: auto 3%;
+}
 .form{
   margin: 5vh auto;
   padding-left: 0%;
@@ -191,6 +194,7 @@ button:hover{
 }
 
 #cargar{
-padding: 0.8vh 2% ;
+
 text-align: right;
+
 }

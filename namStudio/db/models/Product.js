@@ -29,7 +29,7 @@ module.exports = (sequelize, type)=>{
             allowNull: true
         },
         exclusive:{
-            type: type.STRING,
+            type: type.BOOLEAN,
             allowNull: false
         },
         size:{
@@ -37,7 +37,7 @@ module.exports = (sequelize, type)=>{
             allowNull: true
         },
         price:{
-            type: type.DECIMAL(3,2),
+            type: type.DECIMAL(4,2),
             allowNull: true
         },
         categoryId: {
@@ -65,11 +65,10 @@ module.exports = (sequelize, type)=>{
     })
     
     Product.associate = function(models){
-        Product.belongsTo( models.Category,{
+        Product.belongsTo(models.Category,{
             as: "category",
             foreignKey: "category_id"
-            
-        })
+                    })
     }
     Product.associate = function(models){
         Product.belongsToMany( models.Cart,{
@@ -78,8 +77,7 @@ module.exports = (sequelize, type)=>{
             foreignKey: "product_id",
             otherKey: "cart_id",
             timestamps: false
-            
-        })
+                    })
     }
     return Product
 }
