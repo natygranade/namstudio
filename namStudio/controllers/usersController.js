@@ -29,15 +29,6 @@ let usersController= {
             terms: req.body.terms
         })
 
-            /*let users;
-            let usersFile = fs.readFileSync (path.resolve('data','users', 'users.json'), {encoding: 'utf-8'})
-            if(usersFile == ''){
-                users = []
-            } else{
-                users = JSON.parse(usersFile)
-            }
-            users.push(user)
-            fs.writeFileSync(path.resolve('data','users', 'users.json'),JSON.stringify(users))*/
         
         res.redirect('/')
         }else{
@@ -48,14 +39,7 @@ let usersController= {
         let errors = validationResult(req)
         if (errors.isEmpty()){
             
-            /*let usersFile = fs.readFileSync(path.resolve('data','users', 'users.json'), {encoding: 'utf-8'})
-            let users ;
-            if (usersFile == ''){
-                users = []  
-            }else{
-                users = JSON.parse(usersFile)
-            }
-            let userToLog = users.find(user => user.email == req.body.email)*/
+         
 
             let userToLog = db.User.findAll({
                 where: {
