@@ -97,22 +97,13 @@ nav{
 /* Fin Header */
 
 .container{
-  padding: 0 0 ;
+  padding: 15px 0 ;
 }
 
-#cw1{
-cursor: grab;
-position: absolute;
-overflow: hidden;
+#carouselExampleControls{
+   width: 80%;
+}
 
-background-size: 40%;
-background-repeat: repeat;
-left: 0px;
-}
-#carousel{
-  padding-left: 0;
-  padding-right: 0;
-}
 li{
   margin: 1vh 0;
 }
@@ -205,3 +196,4 @@ footer ul{
     font-size: 20px;
   }
 }
+
