@@ -70,7 +70,7 @@ let usersController= {
                     if (valid) {
                         req.session.userLoged = userToLog.email
                  
-                    return res.send('logueado '+ req.session.userLoged )
+                    return res.render('index')
                 } else {
                     return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 
                 }
