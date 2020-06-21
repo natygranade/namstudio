@@ -103,6 +103,10 @@ nav{
 #carouselExampleControls{
    width: 80%;
 }
+#cw1{
+  transition:transform 400ms;
+  transform-origin:top left;
+}
 
 li{
   margin: 1vh 0;
