@@ -11,27 +11,28 @@
 </head>
 <body>
   <%- include('partials/header') %>
-
-
+  
+  
   <div class="container">
     <div class="row">
-  
+      
       <div id="carousel" class=" col-12 col-md-6 col-lg-6">
-       
+        
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2000" pause="hover">
           <div class="carousel-inner">
-     
-            <style>
+            
+            <style id="cw">
               .carousel-inner {
                 background-image: url('/data/cws/<%=product.cw1%>');
                 background-repeat: repeat;
                 background-position: center;
-                background-size: 50%;
+                
               }
             </style>
-
+           
+            
             <div class="carousel-item active">
-     
+              
               <img class="d-block w-100" src="/images/empty.png" alt="First slide">
             </div>
             <div class="carousel-item">
@@ -54,7 +55,7 @@
           </a>
         </div>
       </div>
-  
+      
       <div class="detalle col-12 col-md-6 col-lg-3">
         <h2>DSN#<%=product.name%></h2>
         
@@ -64,16 +65,16 @@
           <span class="font-weight-bold purple-text mr-2 mt-1"><i class="fas fa-minus" aria-hidden="true"></i></span>
           <form class="range-field w-75">
             <label for="zoom">ZOOM</label>
-            <input id="zoom" class="border-1" type="range" min="0" max="100" />
+            <input id="zoom" class="border-1" type="range" min="0" max="100" onchange="zoom('cw1',this.value);" />
           </form>
           <span class="font-weight-bold purple-text ml-2 mt-1"><i class="fas fa-plus" aria-hidden="true"></i></span>
         </div>
         
         <!-- Colorways -->
         <ul type="none">
-          <li><img src="/data/cws/<%=product.cw1%>" width="40%"><a href="#"> CW 1</a></li>
-          <li><img src="/data/cws/<%=product.cw2%>" width="40%"><a href="#"> CW 2</a></li>
-          <li><img src="/data/cws/<%=product.cw3%>" width="40%"><a href="#"> CW 3</a></li>
+          <li><img src="/data/cws/<%=product.cw1%>" width="40%"> <a href="#cw1"> CW 1</a></li>
+          <li><img src="/data/cws/<%=product.cw2%>" width="40%"><a href="#cw2"> CW 2</a></li>
+          <li><img src="/data/cws/<%=product.cw3%>" width="40%"><a href="#cw3"> CW 3</a></li>
         </ul>
         <div id="detalle">
           <h6>TAMAÑO REAL (cm):</h6>
@@ -91,71 +92,35 @@
   
   <div class="similares container">
     <div class="row">
-      <h5 class="col-12">SIMILARES</h5>
+      <h5 class="col-12">SIMILARES</h5> 
     </div>
   </div>
   
   <div class="container-fluid">
     <div class="cards row">
-      <div class="col-12 col-md-4 col-lg-2">
-        <div class="card" >
-          <img src="../images/AP21035JL32X32.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <a href="#" class="btn btn-secondary">VER</a>
+      <%for(let i= 0; i<similar.length; i++){%>
+        <div class="col-12 col-md-4 col-lg-2">
+          <div class="card" >
+            <img src="/data/cws/<%=similar[i].cw1%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <a href="<%=similar[i].id%>" class="btn btn-secondary">VER</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-12 col-md-4 col-lg-2">
-        <div class="card" >
-          <img src="../images/AP21035JL32X32.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <a href="#" class="btn btn-secondary">VER</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 col-lg-2">
-        <div class="card" >
-          <img src="../images/AP21035JL32X32.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <a href="#" class="btn btn-secondary">VER</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 col-lg-2">
-        <div class="card" >
-          <img src="../images/AP21035JL32X32.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <a href="#" class="btn btn-secondary">VER</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 col-lg-2">
-        <div class="card" >
-          <img src="../images/AP21035JL32X32.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <a href="#" class="btn btn-secondary">VER</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 col-lg-2">
-        <div class="card" >
-          <img src="../images/AP21035JL32X32.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <a href="#" class="btn btn-secondary">VER</a>
-          </div>
-        </div>
+        <%}%>
       </div>
     </div>
-  </div>
-      
-      
-      
-      
-      <%-include('partials/footer')%>
-      <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    </body>
-    </html>
     
+    
+    
+    
+    <%-include('partials/footer')%>
+
+    <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="/js/zoom.js"></script>
+  </body>
+  </html>
+  
