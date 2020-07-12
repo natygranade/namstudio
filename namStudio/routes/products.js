@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let productsController = require ('../controllers/productsController.js')
+let productsController = require ('../controllers/productsController')
 let productValidator = require('../middlewares/validators/productValidator')
 const multer = require ('multer')
 const path = require('path')
@@ -10,7 +10,7 @@ var storage = multer.diskStorage({
       cb(null, 'data/cws')
     },
     filename: function (req, file, cb) {
-      console.log(file)
+
       cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
     }
   })
@@ -36,7 +36,7 @@ router.get('/:id', productsController.idProduct);
 
 router.get('/dashboard/editProduct/:id', productsController.edit)
 
-router.patch('/dashboard/editProduct/:id', productsController.update) 
+router.patch('/dashboard/editProduct/:id', upload.any(), productsController.update) 
 
 router.delete('/dashboard/editProduct/:id', productsController.destroy)
 

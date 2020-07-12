@@ -34,11 +34,11 @@ router.post('/login',loginMiddleware, usersController.processLogin)
 
 router.get('/check', usersController.check)
 
-router.get('/edit/:id', usersController.edit);
+router.get('/dashboard/edit/:id', usersController.edit);
 
-router.patch('/edit/:id', usersController.update);
+router.patch('/dashboard/edit/:id', usersController.update);
 
-router.delete('/edit', usersController.delete);
+router.delete('/dashboard/edit/:id', usersController.delete);
 
 module.exports = router;
 
