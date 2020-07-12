@@ -8,7 +8,7 @@
   	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
-  <link rel='stylesheet' href='/stylesheets/index.css'>
+  <link rel='stylesheet' href='/stylesheets/dashboard.css'>
   <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
 </head>
 
@@ -20,12 +20,23 @@
 <div class="container">
 <div class="row">
     <div class="col-6">
+      <h2>DISEÑOS</h2>
+      <a id="newdesign" href="/collection/dashboard/cargaProducto"> NUEVO DISEÑO</a>
+
 <%for (let i=0;i<products.length;i++){%>
     <ul type="none">
         <li><a href="/collection/dashboard/editProduct/<%=products[i].id%>"><%=products[i].name%></a></li>
     </ul>
 <%}%>
+</div>
 
+<div class="col-6">
+  <h2>USUARIOS</h2>
+<%for (let i=0;i<users.length;i++){%>
+<ul type="none">
+    <li><a href="/collection/dashboard/editUser/<%=users[i].id%>"><%=users[i].full_name%></a></li>
+</ul>
+<%}%>
 
 </div>
 

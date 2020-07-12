@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> NAM Studio </title>
   <link rel="shortcut icon" type= "image/x-icon" href="/images/nam4x.png">
-  <!-- Font Awesome Stylesheet -->
+
   <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-  <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel='stylesheet' href='/stylesheets/cargaproducto.css'>
   
 </head>
@@ -17,20 +17,21 @@
   <%- include('./partials/header.ejs') %>
   
   <div class="form container">
-    <form class="row" method="POST" action= "/collection/cargaProducto" enctype="multipart/form-data">
-      <div class="col-12 col-md-3 col-lg-3">
+    <form class="row"  id="form" method="POST" action= "/collection/dashboard/cargaProducto" enctype="multipart/form-data">
+      <div   class="col-12 col-md-3 col-lg-3">
   
       <label for="name">Nombre de diseño</label></br>
-      <input type="text" placeholder="Nombre del diseño" name="name">
+      <input class="form-control"  type="text" placeholder="Nombre del diseño" name="name">
     </br>
     <label for="detail">Detalle</label></br>
-    <textarea name="detail" placeholder="Escribir palabras clave"></textarea>
+    <textarea class="form-control"  name="detail" placeholder="Escribir palabras clave"></textarea>
   </br>
-  <label for="category">Categorias</label></br>
-  <select name="category" >
-    <%for(let i=0;i<categories.length; i++){%>
-    <option value= "<%=categories[i].id%>" selected><%=categories[i].name%></option>
-<%}%>
+  <label for="categories">Categorias</label></br>
+  <select class="form-control" name="categories" >
+ 
+    <% categories.forEach(category => { %>
+       <option  value="<%=category.id%>" label="<%=category.name%>"></option>
+<%})%>
   </select>
 </div>
 
@@ -41,41 +42,44 @@
 </br>
 
   <label for="size">Medidas en cm</label></br>
-  <input type="text" placeholder="32x32" name="size">
+  <input class="form-control"  type="text" placeholder="32x32" name="size">
 </br>
 <label for="price">Precio en USD</label></br>
-<input type="number" placeholder="250" name="price">
+<input  class="form-control" type="text" placeholder="250" name="price">
 </br>
 <label for="exclusive">Exclusivo</label> 
-<input type="checkbox" name="exclusive" value="true">
+<input   type="checkbox" name="exclusive" value="true">
 </div> 
-<div class="col-12 col-md-3 col-lg-3">
+<div class="col-12 col-md-6 col-lg-6">
   <img id="cw1" alt="CW" height="150px"/>  
   <img id="cw2" alt="CW" height="150px"/>
   <img id="cw3" alt="CW" height="150px"/>
   </br>
-
+  <div class="d-none alert alert-success" role="alert">
+    Nuevo diseño cargado!
+  </div>
 <div id="cargar">
-  <button  type="submit">CARGAR</button>
+  <button disabled name="submit" type="submit">CARGAR</button>
 </div>
 
+<%if (typeof errors != 'undefined'){%>
+  <ul type= "none">
+    <% for (let i=0; i <errors.length; i++){%>
+      <li style= "color:red"><%= errors[i].msg %></li>
+    <%}%>
+  </ul>
+  <%} %>
+  
 </div>
 </form>
 </div> 
 
-<%if (typeof errors != 'undefined'){%>
-<ul type= "none">
-  <% for (let i=0; i <errors.length; i++){%>
-    <li><%= errors[i].msg %></li>
-  <%}%>
-</ul>
-<%} %>
 
 <%- include('./partials/footer.ejs') %>
 
-<script src="/javascript/bootstrap.min.js"></script>
-<script src="/javascript/jquery.js"></script>
-<script src="/javascript/popper.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+ <script src="/javascripts/cargaProductoValidator.js"></script> 
 </body>
 </html>

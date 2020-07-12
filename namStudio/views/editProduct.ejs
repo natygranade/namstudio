@@ -9,77 +9,78 @@
   <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
-  <link rel='stylesheet' href='/stylesheets/cargaproducto.css'>
+  <link rel='stylesheet' href='/stylesheets/editProduct.css'>
   
 </head>
 
 <body>
   <%- include('./partials/header.ejs') %>
   
-  <div class="form container">
-    <form class="row" method="POST" action= "/collection/dashboard/editProduct/<%=product.id%>?_method=PATCH" enctype="multipart/form-data">
-      <div class="col-12 col-md-3 col-lg-3">
-  
-      <label for="name">Nombre de diseño</label></br>
-      <input type="text" value="<%=product.name%>" name="name">
+  <div class="form container-fluid">
+ <div class="row">
+      <div class="col-12 col-md-6 col-lg-3">
+        <form  method="POST" action= "/collection/dashboard/editProduct/<%=product.id%>?_method=PATCH" enctype="multipart/form-data">
+        <label for="name">Nombre de diseño</label></br>
+        <input type="text" value="<%=product.name%>" name="name">
+      </br>
+      <label for="detail">Detalle</label></br>
+      <textarea name="detail" value="<%=product.detail%>"></textarea>
     </br>
-    <label for="detail">Detalle</label></br>
-    <textarea name="detail" value="<%=product.detail%>"></textarea>
+    
+    <label for="category">Categorias</label></br>
+    <select name="category" >
+      <%for(let i=0;i<categories.length; i++){%>
+        
+        <option value= "<%=categories[i].id%>" selected><%=categories[i].name%></option>
+        
+        <%}%>
+      </select>
+    </br>
+      <label for="size">Medidas en cm</label></br>
+      <input type="text" value="<%=product.size%>" name="size">
+    </br>
+    <label for="price">Precio en USD</label></br>
+    <input type="number" value="<%=product.price%>" name="price">
   </br>
- 
+  <label for="exclusive">Exclusivo</label> 
+  <input type="checkbox" name="exclusive" value="true">
+</div> 
 
-<div class="col-12 col-md-3 col-lg-3 ">
+<div class="col-12 col-md-6 col-lg-3">
   <label for="colorways">Subir 3 colorways</label></br>
   
-  <input type="file" name="colorways" onchange="document.getElementById('cw1').src = window.URL.createObjectURL(this.files[0]), document.getElementById('cw2').src = window.URL.createObjectURL(this.files[1]), document.getElementById('cw3').src = window.URL.createObjectURL(this.files[2])" multiple>
+  <input type="file" name="colorways" value="<%= product.cw1 %>" onchange="document.getElementById('cw1').src = window.URL.createObjectURL(this.files[0]), document.getElementById('cw2').src = window.URL.createObjectURL(this.files[1]), document.getElementById('cw3').src = window.URL.createObjectURL(this.files[2])" multiple>
 </br>
-<label for="category">Categorias</label></br>
-<select name="category" >
-  <%for(let i=0;i<categories.length; i++){%>
-
-      <option value= "<%=categories[i].id%>" selected><%=categories[i].name%></option>
-
-  <%}%>
-</select>
-</div>
-  <label for="size">Medidas en cm</label></br>
-  <input type="text" value="<%=product.size%>" name="size">
+<img id="cw1" alt="CW" height="150px"/>  
+<img id="cw2" alt="CW" height="150px"/>
+<img id="cw3" alt="CW" height="150px"/>
 </br>
-<label for="price">Precio en USD</label></br>
-<input type="number" value="<%=product.price%>" name="price">
-</br>
-<label for="exclusive">Exclusivo</label> 
-<input type="checkbox" name="exclusive" value="true">
-</div> 
-<div class="col-12 col-md-3 col-lg-3">
-  <img id="cw1" alt="CW" height="150px"/>  
-  <img id="cw2" alt="CW" height="150px"/>
-  <img id="cw3" alt="CW" height="150px"/>
-  </br>
 
-<div id="cargar">
-  <button  type="submit">CARGAR</button>
-</div>
+<button  type="submit">CARGAR</button>
+
+</form>
 <form action="/collection/dashboard/editProduct/<%=product.id%>?_method=DELETE" method="POST">
-    <button type="reset">Borrar</button>
+  <button type="submit">BORRAR</button>
 </form>
 </div>
-</form>
-</div> 
+</div>
+</div>
+
+
 
 <%if (typeof errors != 'undefined'){%>
-<ul type= "none">
-  <% for (let i=0; i <errors.length; i++){%>
-    <li><%= errors[i].msg %></li>
-  <%}%>
-</ul>
-<%} %>
-
-<%- include('./partials/footer.ejs') %>
-
-<script src="/javascript/bootstrap.min.js"></script>
-<script src="/javascript/jquery.js"></script>
-<script src="/javascript/popper.js"></script>
-
-</body>
-</html>
+  <ul type= "none">
+    <% for (let i=0; i <errors.length; i++){%>
+      <li><%= errors[i].msg %></li>
+      <%}%>
+    </ul>
+    <%} %>
+    
+    <%- include('./partials/footer.ejs') %>
+    
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/popper.js"></script>
+    
+  </body>
+  </html>
