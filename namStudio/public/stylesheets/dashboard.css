@@ -12,32 +12,23 @@ body{
    header{
      padding-top: 15px;
      padding-bottom: 5px;
+     padding-left: 2%;
+     padding-right: 2%;
    }
    .container{
-    padding: 0 0 ;
-  }
-   .container-fluid{
-     width:100%;
-     padding-left: 0;
-     padding-right: 0;
-     justify-content: space-between;
+    padding-left: 0;
+    padding-right: 0;
    }
-   #search input{
-     border: solid 1px #cacaca;
-     color:#cacaca;
-     width:60%;
-     border-radius: 5px;
-   }
-   
-   #search button{
-     background-color: white;
-     border: none;
-     color: #666666;
+   form#search button{
+       background-color: rgba(0,0,0,0);
    }
    #search button:hover{
    color:  rgb(190, 10, 10);
    }
+   .header{
+     justify-content: space-between;
    
+   }
    .log{
      text-align: right;
    }
@@ -51,26 +42,30 @@ body{
    a{
     color: #666666;
     text-align: center;
-    justify-content: space-between;
   }
   
   header{
     padding-top: 15px;
     padding-bottom: 5px;
   }
- 
-
+  .container-fluid{
+    width:100%;
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: space-between;
+  }
   #search input{
     border: solid 1px #cacaca;
-    color:#cacaca;
-    width:60%;
+    color:#666666;
+    width:80%;
     border-radius: 5px;
   }
   
-  #search button{
+ #search button  {
     background-color: white;
     border: none;
     color: #666666;
+    width:10%
   }
   #search button:hover{
   color:  rgb(190, 10, 10);
@@ -79,21 +74,18 @@ body{
     justify-content: space-between;
   
   }
-  .log{
-    text-align: right;
-  }
-  .log a{
-    background-color: #cacaca;
-    border-radius: 5px;
-    color:white;
-    font-size: 0.7em;
-    padding: 1vh 2% ;
-  }
-  
-  a{
-    color: #666666;
-    text-decoration: none;
-  }
+  #newdesign{
+    display: inline-block;
+  background-color: #cacaca;
+  border-radius: 5px;
+  color:white;
+  margin: 10px auto;
+  padding: 2vh 2% ;
+}
+#newdesign:hover{
+    color: rgb(190, 10, 10);
+}
+
   a:hover{
     color: rgb(190, 10, 10);
     text-decoration: none;
@@ -101,53 +93,6 @@ body{
   nav{
     padding: 0.2vh 0;
   }
-  h6{
-    text-align:left; 
-  }
-  .categorias{
-    font-size: 0.8em;
-    padding-left: 0%;
-    padding-right: 0;
-  }
-ul{
-  padding-left: 0;
-}
-  li{
-    padding-left: 0;
-    text-align:center;
-    width:100%;
-    background-color: #cacaca;
-    border-bottom: solid 2px white;
-    margin-left: 0;
-  }
-  
-  .product{
-    padding: 1vh 0;
-  }
-  .carousel{
-    margin: 3px;
-  }
-  .carousel-item{
-    background-image: url('../images/AP21035JL32X32.jpg');
-    background-repeat: repeat;
-    cursor: grab;
-    position: relative;
-    overflow: hidden;
-    background-size: 40%;
-  }
-  .btn-secondary{
-    background-color: #cacaca;
-    border-color:#cacaca;
-   padding: 1px 8px;
-    font-size:0.6em; 
-   align-items: stretch;
-  }
-  .btn-secondary:hover{
-  color: rgb(190, 10, 10);
-  background-color: #666666;
-  border-color:#666666;
-  }
-
   
   footer {
     background-color:  #cacaca;
@@ -160,9 +105,7 @@ ul{
   bottom:0;
     align-items: center;
   }
-  .row{
-  margin: 15px 0;
-  }
+
   
   footer ul{
     padding-inline-start: 0px;
@@ -171,7 +114,7 @@ ul{
   }
   @media (max-width: 425px) {
     html {
-      font-size: 10px;
+      font-size: 11px;
     }
     nav{
       margin-top: 0.5vh;
@@ -189,25 +132,20 @@ ul{
     html {
       font-size: 15px;
     }
-
   }
   @media (min-width: 992px) {
     html {
       font-size: 17px;
+    }
+    .form div .col-12{
+margin: 0  10%;
+
     }
   }
   @media (min-width: 1200px) {
     html {
       font-size: 20px;
     }
-  }
 
-  body img{
-      object-fit: cover;
-          width:100%;
-      height:100%;
-    }
+  }
   
-    .dsn{
-      padding:20px 15px;
-    }

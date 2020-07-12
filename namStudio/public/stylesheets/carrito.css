@@ -111,6 +111,8 @@ footer {
   padding-right: 0;
   padding-top: 2vh;
 line-height: 4vh;
+position: relative;
+bottom:0;
   align-items: center;
 }
 .row{
