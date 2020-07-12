@@ -62,7 +62,7 @@ body{
   }
   
  #search button  {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     color: #666666;
     width:10%

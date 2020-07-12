@@ -68,7 +68,7 @@ body{
   }
   
   #search button{
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     color: #666666;
   }
@@ -119,6 +119,9 @@ ul{
     background-color: #cacaca;
     border-bottom: solid 2px white;
     margin-left: 0;
+  }
+ li:hover{
+    background-color:#666666;
   }
   
   .product{
@@ -202,10 +205,11 @@ ul{
     }
   }
 
-  body img{
-      object-fit: cover;
-          width:100%;
-      height:100%;
+.dsn img{
+  object-fit: cover;
+  width:100%;
+  height: 30vh;
+     
     }
   
     .dsn{
