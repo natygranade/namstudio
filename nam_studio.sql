@@ -1,25 +1,28 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
--- Server OS:                    Win64
--- HeidiSQL Version:             11.0.0.5919
--- --------------------------------------------------------
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: nam_studio
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.4.11-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Table structure for table `administrators`
+--
 
--- Dumping database structure for nam_studio
-DROP DATABASE IF EXISTS `nam_studio`;
-CREATE DATABASE IF NOT EXISTS `nam_studio` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `nam_studio`;
-
--- Dumping structure for table nam_studio.administrators
 DROP TABLE IF EXISTS `administrators`;
-CREATE TABLE IF NOT EXISTS `administrators` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `administrators` (
   `id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -28,14 +31,25 @@ CREATE TABLE IF NOT EXISTS `administrators` (
   KEY `fk_administrators_users1_idx` (`user_id`),
   CONSTRAINT `fk_administrators_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.administrators: ~0 rows (approximately)
+--
+-- Dumping data for table `administrators`
+--
+
+LOCK TABLES `administrators` WRITE;
 /*!40000 ALTER TABLE `administrators` DISABLE KEYS */;
 /*!40000 ALTER TABLE `administrators` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dumping structure for table nam_studio.carts
+--
+-- Table structure for table `carts`
+--
+
 DROP TABLE IF EXISTS `carts`;
-CREATE TABLE IF NOT EXISTS `carts` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `carts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantity` smallint(6) NOT NULL DEFAULT 0,
   `total` decimal(4,2) NOT NULL DEFAULT 0.00,
@@ -51,36 +65,51 @@ CREATE TABLE IF NOT EXISTS `carts` (
   CONSTRAINT `fk_carts_customers1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_carts_payments1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.carts: ~0 rows (approximately)
+--
+-- Dumping data for table `carts`
+--
+
+LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dumping structure for table nam_studio.categories
+--
+-- Table structure for table `categories`
+--
+
 DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.categories: ~7 rows (approximately)
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-	(1, 'ANIMAL PRINT', '2020-06-17 02:45:17', NULL),
-	(2, 'ABSTRACTOS', '2020-06-17 02:45:17', NULL),
-	(3, 'FIGURATIVOS', '2020-06-17 02:45:17', NULL),
-	(4, 'FLORALES', '2020-06-17 02:45:18', NULL),
-	(5, 'GEOMETRICOS', '2020-06-17 02:45:18', NULL),
-	(6, 'ORNAMENTALES', '2020-06-17 02:45:18', NULL),
-	(7, 'TROPICALES', '2020-06-17 02:45:18', NULL);
+REPLACE  IGNORE INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES (1,'ANIMAL PRINT','2020-06-17 05:45:17',NULL),(2,'ABSTRACTOS','2020-06-17 05:45:17',NULL),(3,'FIGURATIVOS','2020-06-17 05:45:17',NULL),(4,'FLORALES','2020-06-17 05:45:18',NULL),(5,'GEOMETRICOS','2020-06-17 05:45:18',NULL),(6,'ORNAMENTALES','2020-06-17 05:45:18',NULL),(7,'TROPICALES','2020-06-17 05:45:18',NULL);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dumping structure for table nam_studio.customers
+--
+-- Table structure for table `customers`
+--
+
 DROP TABLE IF EXISTS `customers`;
-CREATE TABLE IF NOT EXISTS `customers` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `adress` varchar(45) DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
@@ -92,59 +121,86 @@ CREATE TABLE IF NOT EXISTS `customers` (
   KEY `fk_customers_users1_idx` (`users_id`),
   CONSTRAINT `fk_customers_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.customers: ~0 rows (approximately)
+--
+-- Dumping data for table `customers`
+--
+
+LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dumping structure for table nam_studio.payments
+--
+-- Table structure for table `payments`
+--
+
 DROP TABLE IF EXISTS `payments`;
-CREATE TABLE IF NOT EXISTS `payments` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `method` varchar(45) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.payments: ~0 rows (approximately)
+--
+-- Dumping data for table `payments`
+--
+
+LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dumping structure for table nam_studio.products
+--
+-- Table structure for table `products`
+--
+
 DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(12) NOT NULL,
+  `name` varchar(13) NOT NULL,
   `detail` varchar(200) DEFAULT NULL,
-  `cw1` varchar(45) NOT NULL,
+  `cw1` varchar(45) DEFAULT NULL,
   `cw2` varchar(45) DEFAULT NULL,
   `cw3` varchar(45) DEFAULT NULL,
-  `exclusive` tinyint(1) DEFAULT NULL,
+  `exclusive` tinyint(1) DEFAULT 0,
   `size` varchar(45) DEFAULT NULL,
-  `price` decimal(4,2) DEFAULT NULL,
+  `price` int(5) DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_products_categories1_idx` (`category_id`),
   CONSTRAINT `fk_products_categories1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 KEY_BLOCK_SIZE=8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 KEY_BLOCK_SIZE=8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.products: ~6 rows (approximately)
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` (`id`, `name`, `detail`, `cw1`, `cw2`, `cw3`, `exclusive`, `size`, `price`, `created_at`, `updated_at`, `category_id`) VALUES
-	(1, 'AP21002MC', 'butterfly', 'colorways-1592438056523.jpg', 'colorways-1592438056560.jpg', 'colorways-1592438056587.jpg', 0, NULL, NULL, '2020-06-17 20:54:16', '2020-06-17 20:54:16', 1),
-	(2, 'AA21015DR', 'brush', 'colorways-1592443423956.jpg', 'colorways-1592443423982.jpg', 'colorways-1592443424043.jpg', 1, '32x32', 99.99, '2020-06-17 22:23:44', '2020-06-17 22:23:44', 2),
-	(4, 'AP21012SR', '', 'colorways-1592443560838.jpg', 'colorways-1592443560865.jpg', 'colorways-1592443560875.jpg', 1, '64x128', 99.99, '2020-06-17 22:26:00', '2020-06-17 22:26:00', 1),
-	(5, 'AP21022JL', '', 'colorways-1592443594380.jpg', 'colorways-1592443594387.jpg', 'colorways-1592443594392.jpg', 1, '32x32', 99.99, '2020-06-17 22:26:34', '2020-06-17 22:26:34', 1),
-	(6, 'BR21014SR', '', 'colorways-1592443655636.jpg', 'colorways-1592443655672.jpg', 'colorways-1592443655724.jpg', 1, '64x128', 99.99, '2020-06-17 22:27:35', '2020-06-17 22:27:35', 2),
-	(7, 'BR21024JL', '', 'colorways-1592443687880.jpg', 'colorways-1592443687899.jpg', 'colorways-1592443687931.jpg', 1, '32x32', 99.99, '2020-06-17 22:28:07', '2020-06-17 22:28:07', 2);
+REPLACE  IGNORE INTO `products` (`id`, `name`, `detail`, `cw1`, `cw2`, `cw3`, `exclusive`, `size`, `price`, `created_at`, `updated_at`, `category_id`) VALUES (1,'AA21015DR','brush','colorways-1592443423956.jpg','colorways-1592443423982.jpg','colorways-1592443424043.jpg',1,'32x32',100,'2020-06-18 01:23:44','2020-06-18 01:23:44',2),(2,'AP21012SR','','colorways-1592443560838.jpg','colorways-1592443560865.jpg','colorways-1592443560875.jpg',1,'64x128',300,'2020-06-18 01:26:00','2020-07-05 19:41:14',7),(3,'AP21022JL','','colorways-1592443594380.jpg','colorways-1592443594387.jpg','colorways-1592443594392.jpg',1,'32x32',100,'2020-06-18 01:26:34','2020-06-18 01:26:34',1),(4,'TR21215JL','leaves','colorways-1594011852937.jpg','colorways-1594011852971.jpg','colorways-1594011852979.jpg',0,'64x32',200,'2020-07-06 05:04:12','2020-07-06 05:04:12',7),(5,'CON21462NG','space','colorways-1594419708036.jpg','colorways-1594419708064.jpg','colorways-1594419708072.jpg',0,'32x32',300,'2020-07-10 22:21:48','2020-07-10 22:21:48',3),(6,'FL21160DM','','colorways-1594521516732.jpg','colorways-1594521516741.jpg','colorways-1594521516750.jpg',0,'32x32',200,'2020-07-12 02:38:36','2020-07-12 02:38:36',4),(19,'CON21144MM','bananas','colorways-1594523926163.jpg','colorways-1594523926165.jpg','colorways-1594523926167.jpg',1,'32x32',0,'2020-07-12 03:18:46','2020-07-12 03:18:46',3),(20,'GE20008NG','','colorways-1594528326154.jpg','colorways-1594528326168.jpg','colorways-1594528326180.jpg',0,'64X64',0,'2020-07-12 04:32:06','2020-07-12 04:32:06',5),(21,'GE20007MC','','colorways-1594528592141.jpg','colorways-1594528592145.jpg','colorways-1594528592149.jpg',0,'32x32',100,'2020-07-12 04:36:32','2020-07-12 04:36:32',5);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dumping structure for table nam_studio.products_carts
+--
+-- Table structure for table `products_carts`
+--
+
 DROP TABLE IF EXISTS `products_carts`;
-CREATE TABLE IF NOT EXISTS `products_carts` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products_carts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
@@ -154,14 +210,25 @@ CREATE TABLE IF NOT EXISTS `products_carts` (
   CONSTRAINT `carts_id` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.products_carts: ~0 rows (approximately)
+--
+-- Dumping data for table `products_carts`
+--
+
+LOCK TABLES `products_carts` WRITE;
 /*!40000 ALTER TABLE `products_carts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `products_carts` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dumping structure for table nam_studio.users
+--
+-- Table structure for table `users`
+--
+
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -173,11 +240,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dumping data for table nam_studio.users: ~0 rows (approximately)
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-07-12  2:27:17
