@@ -32,7 +32,7 @@ module.exports = (sequelize, type)=>{
         },
         updatedAt:{
             type: type.DATE
-        },
+        }
         
     },{
         underscored: true,
@@ -47,6 +47,11 @@ module.exports = (sequelize, type)=>{
     User.associate = function(models){
         User.hasOne( models.Customer,{
             as: "customer",
+            foreignKey: "users_id"
+            
+        })
+        User.hasOne( models.Administrator,{
+            as: "administrator",
             foreignKey: "user_id"
             
         })

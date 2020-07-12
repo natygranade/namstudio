@@ -8,7 +8,7 @@ module.exports = (sequelize, type)=>{
             allowNull: false
         },
         name:{
-            type: type.STRING(12),
+            type: type.STRING(13),
             allowNull: false
         },
         
@@ -30,14 +30,14 @@ module.exports = (sequelize, type)=>{
         },
         exclusive:{
             type: type.BOOLEAN,
-            allowNull: false
+            allowNull: true
         },
         size:{
             type: type.STRING,
             allowNull: true
         },
         price:{
-            type: type.DECIMAL(4,2),
+            type: type.INTEGER(5),
             allowNull: true
         },
         categoryId: {

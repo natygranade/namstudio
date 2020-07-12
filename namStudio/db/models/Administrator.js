@@ -9,10 +9,14 @@ module.exports = (sequelize, type)=>{
         },
         createdAt:{
             type: type.DATE,
-                },
+        },
         updatedAt:{
             type: type.DATE
         },
+        user_id: {
+            type: type.INTEGER,
+            allowNull: false
+        }
         
     },{
         underscored: true,
@@ -24,7 +28,7 @@ module.exports = (sequelize, type)=>{
     })
     
     Administrator.associate = function(models){
-        Administrator.hasOne( models.User,{
+        Administrator.belongsTo( models.User,{
             as: "user",
             foreignKey: "user_id"
             

@@ -15,6 +15,10 @@ module.exports = (sequelize, type)=>{
             type: type.STRING(45),
             allowNull: false
         },
+        users_id: {
+            type: type.INTEGER,
+            allowNull: false
+        },
         createdAt:{
             type: type.DATE
         },
@@ -34,7 +38,7 @@ module.exports = (sequelize, type)=>{
     Customer.associate = function(models){
         Customer.belongsTo( models.User,{
             as: "user",
-            foreignKey: "user_id"
+            foreignKey: "users_id"
             
         })
     }
