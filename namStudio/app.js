@@ -31,6 +31,7 @@ app.use(methodOverride('_method'))
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let  productsRouter = require('./routes/products')
+let dashboardRouter = require('./routes/dashboard')
 const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware')
 
 
@@ -52,6 +53,8 @@ app.use(rememberMeMiddleware)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/collection', productsRouter);
+app.use('/dashboard', dashboardRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

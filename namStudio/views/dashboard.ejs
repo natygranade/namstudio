@@ -21,20 +21,21 @@
 <div class="row">
     <div class="col-6">
       <h2>DISEÑOS</h2>
-      <a id="newdesign" href="/collection/dashboard/cargaProducto"> NUEVO DISEÑO</a>
+      <a id="newdesign" href="/dashboard/cargaProducto"> NUEVO DISEÑO</a>
 
 <%for (let i=0;i<products.length;i++){%>
     <ul type="none">
-        <li><a href="/collection/dashboard/editProduct/<%=products[i].id%>"><%=products[i].name%></a></li>
+        <li><a href="/dashboard/editProduct/<%=products[i].id%>"><%=products[i].name%></a></li>
     </ul>
 <%}%>
 </div>
 
 <div class="col-6">
   <h2>USUARIOS</h2>
+  <a id="newAdmin" href="/dashboard/newAdmin"> NUEVO ADMINISTRADOR</a>
 <%for (let i=0;i<users.length;i++){%>
 <ul type="none">
-    <li><a href="/collection/dashboard/editUser/<%=users[i].id%>"><%=users[i].full_name%></a></li>
+    <li><a href="/dashboard/editUser/<%=users[i].id%>"><%=users[i].full_name%></a></li>
 </ul>
 <%}%>
 

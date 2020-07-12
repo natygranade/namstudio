@@ -16,66 +16,72 @@ let usersController= {
     },
     create:  function (req,res, next){
         let errors = validationResult(req)
-
+        
         if (errors.isEmpty()){
-
-        db.User.create({
-        
-            full_name: req.body.name,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10),
-            phone: req.body.phone,
-            avatar: req.files[0].filename,
-            terms: req.body.terms
-        })
-
-        
-        res.redirect('/')
+            
+            db.User.create({
+                
+                full_name: req.body.name,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+                adress: req.body.adress,
+                country: req.body.country,
+                phone: req.body.phone,
+                avatar: req.files[0].filename,
+                terms: req.body.terms
+            })
+            
+            
+            res.redirect('/')
         }else{
-	return res.render('signup',{errors: errors.errors})
-}
+            return res.render('signup',{errors: errors.errors})
+        }
     },
     processLogin: function (req,res){
         let errors = validationResult(req)
         if (errors.isEmpty()){
+                        
             
-         
-
             let userToLog = db.User.findAll({
                 where: {
-                    email: req.body.email
+                    email: req.body.email,
+                  
                 }
                 .then (function(userToLog){
-                
-                if (userToLog) {
-                
-                    let valid = bcrypt.compareSync(req.body.password, userToLog.password)
-                
-                    if (valid) {
-                        req.session.userLoged = userToLog.email
-                 
-                    return res.render('index')
-                } else {
-                    return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 
-                }
-                } 
+                    
+                    if (userToLog) {
+                        
+                        let valid = bcrypt.compareSync(req.body.password, userToLog.password)
+                        
+                        if (valid) {
+                            req.session.userLoged = userToLog.email
+                            
+                            return res.render('index')
+                        } else {
+                            return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 
+                        }
+                    } 
                 })
             })
         }
         else{
             return res.render('login',{errors: errors.errors})
         }
-    
+        
     },
     check: function (req,res){
-      
+        
         if(req.session.userLoged){
-        res.send(req.session.userLoged)
+            res.send(req.session.userLoged)
         } else{
             res.send("no logueado")
         }
     },
 
+    admin: function (req,res){
+res.render('newAdmin')
+    },
+    
     edit: function (req,res){
         
         db.User.findByPk(req.params.id)
@@ -83,74 +89,44 @@ let usersController= {
             res.render('userEdit', {user:user});
         }
         )},
-
-    update: function (req, res){
-        db.User.update({
-
-            full_name: req.body.name,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10),
-            phone: req.body.phone,
-            avatar: req.files[0].filename,
-            terms: req.body.terms
-
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
-        res.redirect('/users/edit/' + req.params.id)
-    },
         
-        /*let users;    
-        let editUser = users.findIndex(function (user) {
-            return user.id == req.params.id
-        })
-        users[editUser].email = req.body.email,
-        users[editUser].password = req.body.password,
-        users[editUser].nombre = req.body.name,
-        users[editUser].razon = req.body.razon,
-        users[editUser].provincia = req.body.provincia,
-        users[editUser].codPos = req.body.codPos,
-        users[editUser].telefono = req.body.telefono;
+        update: function (req, res){
+            db.User.update({
+                
+                full_name: req.body.name,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+                adress: req.body.adress,
+                country: req.body.country,
+                phone: req.body.phone,
+                avatar: req.files[0].filename,
+                terms: req.body.terms
+                
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            res.redirect('/users/edit/' + req.params.id)
+        },
         
+        delete: function (req,res,next){
+            db.User.findByPk(req.params.id)
+                .then(user =>{
+                    fs.unlink(`./data/avatar/${user.avatar}`, (err) => {
+                        if (err) throw err;
+                    })
+                })
+            db.User.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+                      
+            res.redirect('/users/signup')
+            
+        },
         
-        let usersJson = fs.readFileSync (path.resolve('data','users', 'users.json'), {encoding: 'utf-8'})
-        if(usersJson == ''){
-            users = []
-        } else{
-            users = JSON.parse(usersJson)
-        }
-        fs.appendFileSync(path.resolve('data','users', 'users.json'),JSON.stringify(users))
-        
-        res.status(200).send('')
-    },*/
-
-    delete: function (req,res,next){
-        
-        db.User.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        /*let index = users.findIndex(function (user) {
-            return user.id == req.params.id
-        })
-        delete users[index]
-        res.status(200).send('Ok')
-        let users;
-        let usersJson = fs.readFileSync(path.resolve('data', 'users', 'users.json'), { encoding: 'utf-8' })
-        if (usersJson == '') {
-            users = []
-        } else {
-            users = JSON.parse(usersJson)
-        }
-        fs.appendFileSync(path.resolve('data', 'users', 'users.json'), JSON.stringify(users))*/
-        
-        res.redirect('/users/signup')
-        
-    },
-       
-}
-
-module.exports = usersController;
+    }
+    
+    module.exports = usersController;

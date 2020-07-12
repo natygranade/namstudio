@@ -5,7 +5,7 @@ const path = require('path')
 let db = require('../db/models')
 const { Op } = require("sequelize");
 const {check, validationResult, body} = require ('express-validator');
-const Product = require('../db/models/Product')
+
 
 let productsController= {
     collection: function(req,res,next){
@@ -39,7 +39,7 @@ let productsController= {
                 price: req.body.price
             })
             
-           res.redirect('/collection/dashboard/cargaProducto')
+           res.redirect('/dashboard/cargaProducto')
          }else{
              db.Category.findAll()
          .then(categories=>{
@@ -72,19 +72,7 @@ let productsController= {
                     console.log(error)
                 })
             },
-            dashboard: async function(req,res,next){
-            let users = await db.User.findAll()
-            let products =  db.Product.findAll()
-            
-            Promise.all([users, products])
-            .then(function([users, products]){
-                  return  res.render('dashboard', {users:users, products:products})
-                })
-
-                .catch(error=>{
-                    console.log(error)
-                })
-            },
+          
             edit: function(req,res, next){
                 let product = db.Product.findByPk(req.params.id,{
                     include: [{
@@ -121,7 +109,7 @@ let productsController= {
                         }
                     })
                     
-                    res.redirect('/collection/dashboard')
+                    res.redirect('/dashboard')
                 },
                 destroy: (req,res)=>{
                     db.Product.findByPk(req.params.id,{
@@ -145,7 +133,7 @@ let productsController= {
                             }
                         });
                         
-                        res.redirect('/collection/dashboard')
+                        res.redirect('/dashboard')
                     }
                 }
                 
