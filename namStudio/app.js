@@ -6,7 +6,7 @@ var logger = require('morgan');
 var app = express();
 const session= require('express-session')
 const methodOverride = require('method-override')
-const ejsLint = require('ejs-lint')
+
 
 app.use(function(req,res,next){
   let parts = req.url.split('/')
