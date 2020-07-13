@@ -28,7 +28,8 @@ let usersController= {
                 country: req.body.country,
                 phone: req.body.phone,
                 avatar: req.files[0].filename,
-                terms: req.body.terms
+                terms: req.body.terms,
+                admin: req.body.admin
             })
             
             
@@ -40,12 +41,12 @@ let usersController= {
     processLogin: function (req,res){
         let errors = validationResult(req)
         if (errors.isEmpty()){
-                        
+            
             
             let userToLog = db.User.findAll({
                 where: {
                     email: req.body.email,
-                  
+                    
                 }
                 .then (function(userToLog){
                     
@@ -76,10 +77,6 @@ let usersController= {
         } else{
             res.send("no logueado")
         }
-    },
-
-    admin: function (req,res){
-res.render('newAdmin')
     },
     
     edit: function (req,res){
@@ -112,21 +109,47 @@ res.render('newAdmin')
         
         delete: function (req,res,next){
             db.User.findByPk(req.params.id)
-                .then(user =>{
-                    fs.unlink(`./data/avatar/${user.avatar}`, (err) => {
-                        if (err) throw err;
-                    })
+            .then(user =>{
+                fs.unlink(`./data/avatar/${user.avatar}`, (err) => {
+                    if (err) throw err;
                 })
+            })
             db.User.destroy({
                 where: {
                     id: req.params.id
                 }
             })
-                      
+            
             res.redirect('/users/signup')
             
         },
-        
+        admin: function (req,res){
+            res.render('newAdmin')
+        },
+        createAdmin:  function (req,res, next){
+            let errors = validationResult(req)
+            console.log(errors)
+            if (errors.isEmpty()){
+                
+                db.User.create({
+                    
+                    full_name: req.body.name,
+                    email: req.body.email,
+                    password: bcrypt.hashSync(req.body.password, 10),
+                    adress: req.body.adress,
+                    country: req.body.country,
+                    phone: req.body.phone,
+                    avatar: req.files[0].filename,
+                    terms: req.body.terms,
+                    admin: req.body.admin
+                })
+                
+                return  res.redirect('/dashboard')
+            }else{
+                return res.render('newAdmin',{errors: errors.errors})
+            }
+
+        } 
     }
     
     module.exports = usersController;

@@ -3,6 +3,7 @@ var router = express.Router();
 let usersController = require ('../controllers/usersController')
 let productsController = require ('../controllers/productsController')
 let productValidator = require('../middlewares/validators/productValidator')
+let signupMiddleware = require('../middlewares/signupMiddleware')
 
 const multer = require ('multer')
 const path = require('path')
@@ -44,7 +45,9 @@ router.get('/', async function(req,res,next){
         })
     })
 
-router.get('/newAdmin', usersController.admin)
+router.get('/newAdmin', usersController.admin);
+
+router.post('/newAdmin', upload.any(),signupMiddleware, usersController.createAdmin);
 
 router.get('/edit/:id', usersController.edit);
 

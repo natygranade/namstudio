@@ -130,3 +130,9 @@ border-top: solid 1px white;
    .form-row{
 padding: 10vh auto;
    }
+
+
+   .admin{
+     display: inline;
+     margin: 0 15px;
+   }
