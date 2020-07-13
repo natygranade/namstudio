@@ -32,7 +32,8 @@
 
 <div class="col-6">
   <h2>USUARIOS</h2>
-  <a id="newAdmin" href="/dashboard/newAdmin"> NUEVO ADMINISTRADOR</a>
+  <a id="newadmin" href="/dashboard/newAdmin"> NUEVO ADMINISTRADOR</a>
+
 <%for (let i=0;i<users.length;i++){%>
 <ul type="none">
     <li><a href="/dashboard/editUser/<%=users[i].id%>"><%=users[i].full_name%></a></li>
