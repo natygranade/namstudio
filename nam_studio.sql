@@ -16,33 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `administrators`
---
-
-DROP TABLE IF EXISTS `administrators`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `administrators` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_administrators_users1_idx` (`user_id`),
-  CONSTRAINT `fk_administrators_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `administrators`
---
-
-LOCK TABLES `administrators` WRITE;
-/*!40000 ALTER TABLE `administrators` DISABLE KEYS */;
-/*!40000 ALTER TABLE `administrators` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `carts`
 --
 
@@ -58,12 +31,12 @@ CREATE TABLE `carts` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `payment_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_carts_payments1_idx` (`payment_id`),
-  KEY `fk_carts_customers1_idx` (`customer_id`),
-  CONSTRAINT `fk_carts_customers1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_carts_payments1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_carts_customers1_idx` (`user_id`),
+  CONSTRAINT `fk_carts_payments1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_carts_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -100,36 +73,6 @@ LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 REPLACE  IGNORE INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES (1,'ANIMAL PRINT','2020-06-17 05:45:17',NULL),(2,'ABSTRACTOS','2020-06-17 05:45:17',NULL),(3,'FIGURATIVOS','2020-06-17 05:45:17',NULL),(4,'FLORALES','2020-06-17 05:45:18',NULL),(5,'GEOMETRICOS','2020-06-17 05:45:18',NULL),(6,'ORNAMENTALES','2020-06-17 05:45:18',NULL),(7,'TROPICALES','2020-06-17 05:45:18',NULL);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `customers`
---
-
-DROP TABLE IF EXISTS `customers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `customers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `adress` varchar(45) DEFAULT NULL,
-  `country` varchar(45) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `users_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  KEY `fk_customers_users1_idx` (`users_id`),
-  CONSTRAINT `fk_customers_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `customers`
---
-
-LOCK TABLES `customers` WRITE;
-/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -180,7 +123,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `fk_products_categories1_idx` (`category_id`),
   CONSTRAINT `fk_products_categories1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 KEY_BLOCK_SIZE=8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 KEY_BLOCK_SIZE=8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +132,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-REPLACE  IGNORE INTO `products` (`id`, `name`, `detail`, `cw1`, `cw2`, `cw3`, `exclusive`, `size`, `price`, `created_at`, `updated_at`, `category_id`) VALUES (1,'AA21015DR','brush','colorways-1592443423956.jpg','colorways-1592443423982.jpg','colorways-1592443424043.jpg',1,'32x32',100,'2020-06-18 01:23:44','2020-06-18 01:23:44',2),(2,'AP21012SR','','colorways-1592443560838.jpg','colorways-1592443560865.jpg','colorways-1592443560875.jpg',1,'64x128',300,'2020-06-18 01:26:00','2020-07-05 19:41:14',7),(3,'AP21022JL','','colorways-1592443594380.jpg','colorways-1592443594387.jpg','colorways-1592443594392.jpg',1,'32x32',100,'2020-06-18 01:26:34','2020-06-18 01:26:34',1),(4,'TR21215JL','leaves','colorways-1594011852937.jpg','colorways-1594011852971.jpg','colorways-1594011852979.jpg',0,'64x32',200,'2020-07-06 05:04:12','2020-07-06 05:04:12',7),(5,'CON21462NG','space','colorways-1594419708036.jpg','colorways-1594419708064.jpg','colorways-1594419708072.jpg',0,'32x32',300,'2020-07-10 22:21:48','2020-07-10 22:21:48',3),(6,'FL21160DM','','colorways-1594521516732.jpg','colorways-1594521516741.jpg','colorways-1594521516750.jpg',0,'32x32',200,'2020-07-12 02:38:36','2020-07-12 02:38:36',4),(19,'CON21144MM','bananas','colorways-1594523926163.jpg','colorways-1594523926165.jpg','colorways-1594523926167.jpg',1,'32x32',0,'2020-07-12 03:18:46','2020-07-12 03:18:46',3),(20,'GE20008NG','','colorways-1594528326154.jpg','colorways-1594528326168.jpg','colorways-1594528326180.jpg',0,'64X64',0,'2020-07-12 04:32:06','2020-07-12 04:32:06',5),(21,'GE20007MC','','colorways-1594528592141.jpg','colorways-1594528592145.jpg','colorways-1594528592149.jpg',0,'32x32',100,'2020-07-12 04:36:32','2020-07-12 04:36:32',5);
+REPLACE  IGNORE INTO `products` (`id`, `name`, `detail`, `cw1`, `cw2`, `cw3`, `exclusive`, `size`, `price`, `created_at`, `updated_at`, `category_id`) VALUES (1,'AA21015DR','brush','colorways-1592443423956.jpg','colorways-1592443423982.jpg','colorways-1592443424043.jpg',1,'32x32',100,'2020-06-18 01:23:44','2020-06-18 01:23:44',2),(2,'AP21012SR','','colorways-1592443560838.jpg','colorways-1592443560865.jpg','colorways-1592443560875.jpg',1,'64x128',300,'2020-06-18 01:26:00','2020-07-12 19:06:47',1),(3,'AP21022JL','','colorways-1592443594380.jpg','colorways-1592443594387.jpg','colorways-1592443594392.jpg',1,'32x32',100,'2020-06-18 01:26:34','2020-06-18 01:26:34',1),(4,'TR21215JL','leaves','colorways-1594011852937.jpg','colorways-1594011852971.jpg','colorways-1594011852979.jpg',0,'64x32',200,'2020-07-06 05:04:12','2020-07-06 05:04:12',7),(5,'CON21462NG','space','colorways-1594419708036.jpg','colorways-1594419708064.jpg','colorways-1594419708072.jpg',0,'32x32',300,'2020-07-10 22:21:48','2020-07-10 22:21:48',3),(6,'FL21160DM','','colorways-1594521516732.jpg','colorways-1594521516741.jpg','colorways-1594521516750.jpg',0,'32x32',200,'2020-07-12 02:38:36','2020-07-12 02:38:36',4),(19,'CON21144MM','bananas','colorways-1594523926163.jpg','colorways-1594523926165.jpg','colorways-1594523926167.jpg',1,'32x32',0,'2020-07-12 03:18:46','2020-07-12 03:18:46',3),(20,'GE20008NG','','colorways-1594528326154.jpg','colorways-1594528326168.jpg','colorways-1594528326180.jpg',0,'64X64',0,'2020-07-12 04:32:06','2020-07-12 04:32:06',5),(21,'GE20007MC','','colorways-1594528592141.jpg','colorways-1594528592145.jpg','colorways-1594528592149.jpg',0,'32x32',100,'2020-07-12 04:36:32','2020-07-12 04:36:32',5),(22,'FL21006MC','','colorways-1594594589930.jpg','colorways-1594594589950.jpg','colorways-1594594589962.jpg',1,'32x32',250,'2020-07-12 22:56:29','2020-07-12 22:56:29',4);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,6 +181,9 @@ CREATE TABLE `users` (
   `avatar` varchar(45) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
+  `adress` varchar(45) DEFAULT NULL,
+  `country` varchar(45) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -248,6 +194,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+REPLACE  IGNORE INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `terms`, `avatar`, `created_at`, `updated_at`, `adress`, `country`, `admin`) VALUES (0,'Natalia Granadé','natig2003@hotmail.com','$2b$10$Y',32767,1,NULL,'2020-07-13 01:53:44','2020-07-13 01:53:44','gascon 1181','Argentina',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -260,4 +207,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-12  2:27:17
+-- Dump completed on 2020-07-12 23:22:22
