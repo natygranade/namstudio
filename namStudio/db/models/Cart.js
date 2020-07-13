@@ -29,6 +29,10 @@ module.exports = (sequelize, type)=>{
         updatedAt:{
             type: type.DATE
         },
+        user_id: {
+            type: type.INTEGER,
+            allowNull: false
+        }
         
     },{
         underscored: true,
@@ -40,9 +44,9 @@ module.exports = (sequelize, type)=>{
     })
     
     Cart.associate = function(models){
-        Cart.hasOne( models.Customer,{
-            as: "customer",
-            foreignKey: "customer_id"
+        Cart.belongsTo( models.User,{
+            as: "user",
+            foreignKey: "user_id"
             
         })
 
