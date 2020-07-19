@@ -27,16 +27,14 @@ CREATE TABLE `carts` (
   `quantity` smallint(6) NOT NULL DEFAULT 0,
   `total` decimal(4,2) NOT NULL DEFAULT 0.00,
   `paid` tinyint(1) NOT NULL,
-  `deleted` tinyint(1) NOT NULL,
+  `deleted_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `payment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_carts_payments1_idx` (`payment_id`),
-  KEY `fk_carts_customers1_idx` (`user_id`),
-  CONSTRAINT `fk_carts_payments1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_carts_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_carts_payments1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -147,6 +145,9 @@ CREATE TABLE `products_carts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_products_has_carts_carts1_idx` (`cart_id`),
   KEY `fk_products_has_carts_products1_idx` (`product_id`),
@@ -172,20 +173,21 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(100) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(8) NOT NULL,
   `phone` smallint(6) DEFAULT NULL,
   `terms` tinyint(1) NOT NULL,
-  `avatar` varchar(45) DEFAULT NULL,
+  `avatar` varchar(45) NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `adress` varchar(45) DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
   `admin` tinyint(1) DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +196,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-REPLACE  IGNORE INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `terms`, `avatar`, `created_at`, `updated_at`, `adress`, `country`, `admin`) VALUES (0,'Natalia Granadé','natig2003@hotmail.com','$2b$10$Y',32767,1,NULL,'2020-07-13 01:53:44','2020-07-13 01:53:44','gascon 1181','Argentina',1);
+REPLACE  IGNORE INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `terms`, `avatar`, `created_at`, `updated_at`, `adress`, `country`, `admin`) VALUES (1,'Natalia Granadé','natig2003@hotmail.com','$2b$10$k',32767,1,'avatar-1595179659987.PNG','2020-07-19 17:27:40','2020-07-19 17:27:40','gascon','Argentina',1),(4,'pepe','pepe@gmail.com','$2b$10$x',0,1,'avatar-1595182335295.PNG','2020-07-19 18:12:15','2020-07-19 18:12:15','','',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -207,4 +209,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-12 23:22:22
+-- Dump completed on 2020-07-19 17:28:01
