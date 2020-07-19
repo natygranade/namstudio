@@ -38,37 +38,32 @@ let usersController= {
             return res.render('signup',{errors: errors.errors})
         }
     },
-    processLogin: function (req,res){
+    processLogin:  async function (req,res){
         let errors = validationResult(req)
         if (errors.isEmpty()){
             
-            
-            let userToLog = db.User.findAll({
+            await db.User.findOne({
                 where: {
                     email: req.body.email,
-                    
                 }
-                .then (function(userToLog){
+            })                      
+            .then (userToLog =>{
+                
+                if (userToLog) {
+                    let valid = bcrypt.compare(req.body.password, userToLog.password)
                     
-                    if (userToLog) {
-                        
-                        let valid = bcrypt.compareSync(req.body.password, userToLog.password)
-                        
-                        if (valid) {
-                            req.session.userLoged = userToLog.email
-                            
-                            return res.render('index')
-                        } else {
-                            return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 
-                        }
-                    } 
-                })
+                    if (valid) {
+                        req.session.userLoged = userToLog.email
+                        return res.render('index')
+                    } else {
+                        return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 
+                    }
+                } 
             })
         }
         else{
             return res.render('login',{errors: errors.errors})
         }
-        
     },
     check: function (req,res){
         
@@ -143,12 +138,15 @@ let usersController= {
                     terms: req.body.terms,
                     admin: req.body.admin
                 })
+                .catch(function(err){
+                    console.log(err)
+                })
                 
                 return  res.redirect('/dashboard')
             }else{
                 return res.render('newAdmin',{errors: errors.errors})
             }
-
+            
         } 
     }
     

@@ -21,15 +21,18 @@ module.exports = (sequelize, type)=>{
         },
         adress:{
             type: type.STRING(45),
-            allowNull: true
+            allowNull: true,
+            defaultValue: null
         },
         country:{
             type: type.STRING(45),
-            allowNull: true
+            allowNull: true,
+            defaultValue: null
         },
         phone:{
             type: type.STRING(20),
-            allowNull: true
+            allowNull: true,
+            defaultValue: null
         },
         terms:{
             type: type.BOOLEAN,
@@ -37,14 +40,19 @@ module.exports = (sequelize, type)=>{
         },
         admin: {
             type: type.BOOLEAN,
-            allowNull: true
+            allowNull: true,
+            defaultValue: 0
         },
         createdAt:{
             type: type.DATE
         },
         updatedAt:{
             type: type.DATE
-        }
+        },
+        avatar: {
+            type: type.STRING(100),
+            allowNull: false,
+                   }
               
     },{
         underscored: true,

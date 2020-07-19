@@ -75,16 +75,16 @@
       <div class="form col-12">
         <button id="register" class="btn btn-secondary" type="submit">NUEVO ADMIN</button>
       </div>
-      
-    </div>
-    <% if (typeof errors != 'undefined'){ %>
-      <ul type= "none">
-        <% for (let i=0; i <errors.length; i++){%>
-          <li style="color:red"><%= errors[i].msg %></li>
+      <% if (typeof errors != 'undefined'){ %>
+        <ul type= "none">
+          <% for (let i=0; i <errors.length; i++){%>
+            <li style="color:red"><%= errors[i].msg %></li>
+            <%}%>
+          </ul>
           <%}%>
-        </ul>
-        <%}%>
-        
+          
+    </div>
+
       </form>
       
       
