@@ -39,9 +39,10 @@ module.exports = (sequelize, type)=>{
         tableName: 'carts',
         timestamps: true,
         createdAt: 'created_at',
-        updatedAt: 'updated_at'
-        
-    })
+        updatedAt: 'updated_at',
+        deletedAt: 'created_at', 
+        paranoid: true
+            })
     
     Cart.associate = function(models){
         Cart.belongsTo( models.User,{
@@ -50,7 +51,7 @@ module.exports = (sequelize, type)=>{
             
         })
 
-        Cart.hasOne( models.Payment,{
+        Cart.belongsTo( models.Payment,{
             as: "payment",
             foreignKey: "payment_id"
             
@@ -61,7 +62,7 @@ module.exports = (sequelize, type)=>{
             through: "products_carts",
             foreignKey: "cart_id",
             otherKey: "product_id",
-            timestamps: false
+            timestamps: true
             
         })
     }
