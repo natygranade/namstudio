@@ -32,6 +32,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let  productsRouter = require('./routes/products')
 let dashboardRouter = require('./routes/dashboard')
+let cartRouter = require('./routes/cart')
 const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware')
 
 
@@ -54,6 +55,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/collection', productsRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/cart', cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
