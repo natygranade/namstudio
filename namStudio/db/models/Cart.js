@@ -19,14 +19,14 @@ module.exports = (sequelize, type)=>{
             type: type.BOOLEAN,
             allowNull: false
         },
-        deleted:{
-            type: type.BOOLEAN,
-            allowNull: false
-        },
+        
         createdAt:{
             type: type.DATE
         },
         updatedAt:{
+            type: type.DATE
+        },
+        deletedAt:{
             type: type.DATE
         },
         user_id: {
@@ -40,7 +40,7 @@ module.exports = (sequelize, type)=>{
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
-        deletedAt: 'created_at', 
+        deletedAt: 'deleted_at', 
         paranoid: true
             })
     
@@ -59,7 +59,7 @@ module.exports = (sequelize, type)=>{
  
         Cart.belongsToMany( models.Product,{
             as: "products",
-            through: "products_carts",
+            through: "product_cart",
             foreignKey: "cart_id",
             otherKey: "product_id",
             timestamps: true

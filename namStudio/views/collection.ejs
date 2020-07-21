@@ -17,42 +17,46 @@
       <div class="categorias col-2">
         <h6>CATEGORIAS</h6>
         <ul type="none">
-        <li><a href="collection">ANIMAL PRINT</a></li>
-        <li><a href="collection">FLORALES</a></li>
-        <li><a href="collection">TROPICALES</a></li>
-        <li><a href="collection">ABSTRACTOS</a></li>
-        <li><a href="collection">GEOMETRICOS</a></li>
-        <li><a href="collection">ORNAMENTALES</a></li>
-        <li><a href="collection">FIGURATIVOS</a></li>
-      </ul>
-        </div>   
-
+          <li><a href="collection">ANIMAL PRINT</a></li>
+          <li><a href="collection">FLORALES</a></li>
+          <li><a href="collection">TROPICALES</a></li>
+          <li><a href="collection">ABSTRACTOS</a></li>
+          <li><a href="collection">GEOMETRICOS</a></li>
+          <li><a href="collection">ORNAMENTALES</a></li>
+          <li><a href="collection">FIGURATIVOS</a></li>
+        </ul>
+      </div>   
+      
       <div class="product col-10">
         <div class="container-fluid">
           <div class="row">
+            
             <%for (let i=0; i< products.length; i++){%>
-                   <div class="dsn col-12 col-sm-4 col-md-3 col-lg-3">
+              <div data-product-id="<%=products[i].id%>" class="dsn col-12 col-sm-4 col-md-3 col-lg-3">
                 
-      <img  src="/data/cws/<%= products[i].cw1%>" height="150px">
-  
-<a href="/collection/<%= products[i].id%>" class="btn btn-secondary">VER</a>
-<a href="carrito" class="btn btn-secondary">AGREGAR AL CARRITO</a>
-</div>
-           <% } %>
-
-
-</div>
-</div>
-</div>
-</div>
-</div>
-
-  <%- include('./partials/footer.ejs') %>   
+                <img  src="/data/cws/<%= products[i].cw1%>" height="150px">
+                
+                <a href="/collection/<%= products[i].id%>" class="btn btn-secondary">VER</a>
+                
+                <button type="submit" class="add-to-cart btn btn-secondary">AGREGAR AL CARRITO</button>
+                
+              </div>
+              <% } %>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <%- include('./partials/footer.ejs') %>   
     
     <script src="https://kit.fontawesome.com/eb81e2a038.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+ <script src="/javascripts/addCart.js"></script>
   </body>
   </html>
   

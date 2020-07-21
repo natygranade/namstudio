@@ -8,10 +8,19 @@ const {check, validationResult, body} = require ('express-validator');
 
 
 let productsController= {
-    collection: function(req,res,next){
-        db.Product.findAll()
-        .then(products=>{
-            res.render('collection', {products:products})
+    collection: async function(req,res,next){
+let cart = await db.Cart.findOne({
+    where:{
+        user_id: 4
+    }
+})
+let products = db.Product.findAll()
+Promise.all([cart, products])
+        .then(function ([cart, products]){
+          return  res.render('collection', {products:products,  cart:cart})
+        })
+        .catch(error=>{
+            console.log(error)
         })
     },
     cargaProducto: function(req,res,next){

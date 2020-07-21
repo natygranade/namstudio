@@ -53,7 +53,7 @@ let usersController= {
                     let valid = bcrypt.compare(req.body.password, userToLog.password)
                     
                     if (valid) {
-                        req.session.userLoged = userToLog.email
+                        req.session.userLoged = userToLog.id
                         return res.render('index')
                     } else {
                         return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 

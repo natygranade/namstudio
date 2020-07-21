@@ -5,7 +5,7 @@ let cartController = require ('../controllers/cartController')
 
 router.get('/', cartController.cart)
 
-
+router.post('/', cartController.add)
 
 
 
