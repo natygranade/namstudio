@@ -4,6 +4,6 @@ let apiProductsController = require ('../../controllers/apiProductsController')
 
 router.get ('/', apiProductsController.list)
 
-
+router.get('/categories', apiProductsController.categories)
 
 module.exports = router

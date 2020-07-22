@@ -11,6 +11,12 @@ list: function (req,res){
 res.json(response)
 
     })
+},
+categories: function (req,res){
+    db.Category.findAll()
+    .then(response =>{
+            res.json(response)
+    })
 }
 }
 
