@@ -6,7 +6,7 @@ var logger = require('morgan');
 var app = express();
 const session= require('express-session')
 const methodOverride = require('method-override')
-
+let cors = require('cors')
 
 app.use(function(req,res,next){
   let parts = req.url.split('/')
@@ -33,16 +33,17 @@ var usersRouter = require('./routes/users');
 let  productsRouter = require('./routes/products')
 let dashboardRouter = require('./routes/dashboard')
 let cartRouter = require('./routes/cart')
+let apiProductsRouter = require('./routes/api/products')
 const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware')
 
 
 // Servidor
-app.listen(3000, 'localhost')
+app.listen(8000, 'localhost')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -56,6 +57,7 @@ app.use('/users', usersRouter);
 app.use('/collection', productsRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/cart', cartRouter);
+app.use('/api/products', apiProductsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
