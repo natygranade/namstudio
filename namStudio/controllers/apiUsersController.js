@@ -7,6 +7,10 @@ let apiUsersCotroller = {
         .then(response =>{
             res.json(response)
         })
+    },
+    detail: function(req,res){
+        db.User.findByPk(req.session.userLoged)
+        .then( user => res.json(user))
     }
 }
 

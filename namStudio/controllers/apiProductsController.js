@@ -6,9 +6,12 @@ list: function (req,res){
     db.Product.findAll({
         include: ['category']
     })
-    .then(response =>{
-     
-res.json(response)
+    .then(products =>{
+        for(let i=0;i<products.length;i++){
+            products[i].setDataValue( "image_path", "namStudio/data/cws" + products[i].cw1 )
+        }
+  
+res.json(products)
 
     })
 },

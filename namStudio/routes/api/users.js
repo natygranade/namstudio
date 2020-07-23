@@ -1,8 +1,10 @@
 let express = require('express')
 let router = express.Router()
-let apiProductsController = require ('../../controllers/apiUsersController')
+const apiUsersCotroller = require('../../controllers/apiUsersController')
 
 
-router.get ('/', apiProductsController.list)
+router.get ('/', apiUsersCotroller.list)
+
+router.get('/logedUser', apiUsersCotroller.detail)
 
 module.exports = router

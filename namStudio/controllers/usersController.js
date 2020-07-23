@@ -68,7 +68,7 @@ let usersController= {
     check: function (req,res){
         
         if(req.session.userLoged){
-            res.send(req.session.userLoged)
+            res.send({session: req.session.userLoged})
         } else{
             res.send("no logueado")
         }
