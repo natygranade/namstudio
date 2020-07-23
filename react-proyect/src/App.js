@@ -10,9 +10,11 @@ class App extends Component {
   constructor(){
     super();
     this.state ={
+      lastProduct: "",
       productTotal: "",
       totalPrice: "",
-      users: ""
+      users: "",
+      categoryLastProduct: ""
     }
   }
     apiCall(url, consecuencia){
@@ -39,8 +41,10 @@ amount.push(data[i].price)
   }
 let sum = amount.reduce((a,b)=> a+b)
 this.setState({
+  lastProduct: data[total-1],
   productTotal: total,
-  totalPrice: sum
+  totalPrice: sum,
+  categoryLastProduct: data[total-1].category
  })
 }
 
@@ -69,11 +73,11 @@ showUser = data =>{
 <div className="row">
 <Card color="primary" title= "Products in Data Base" number={this.state.productTotal} icon="fas fa-clipboard-list fa-2x text-gray-300"/>
 <Card color="success" title= "Amount in products" number={this.state.totalPrice} icon="fas fa-dollar-sign fa-2x text-gray-300"/>
-<Card color="warning" title= "Users quantity" number="38" icon="fas fa-user-check fa-2x text-gray-300"/>
+<Card color="warning" title= "Users quantity" number={this.state.users}  icon="fas fa-user-check fa-2x text-gray-300"/>
   
 </div>
 <div className="row">
-  <ProductDB />
+  <ProductDB  product ={this.state.lastProduct} category={this.state.categoryLastProduct}/>
   <CategoryDB />
    </div>
     </div>
