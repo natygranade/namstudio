@@ -32,23 +32,23 @@ function Sidebar (){
          {/* Nav Item - Pages*/} 
         <li className="nav-item">
             <a className="nav-link collapsed" href="/">
-                <i className="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
+            <i className="fas fa-palette"></i>
+                <span>Designs</span>
             </a>
         </li>
 
          {/* Nav Item - Charts  */}
         <li className="nav-item">
             <a className="nav-link" href="/">
-                <i className="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
+            <i className="fas fa-users"></i>
+                <span>Users</span></a>
         </li>
 
          {/*Nav Item - Tables */} 
         <li className="nav-item">
             <a className="nav-link" href="/">
-                <i className="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
+            <i className="fas fa-shopping-basket"></i>
+                <span>Purchases</span></a>
         </li>
 
         {/*Divider */}
