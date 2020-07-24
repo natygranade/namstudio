@@ -1,7 +1,7 @@
 let express = require('express');
 let db = require('../db/models')
 
-let apiUsersCotroller = {
+let apiUsersController = {
     list: function (req,res){
         db.User.findAll()
         .then(response =>{
@@ -14,4 +14,4 @@ let apiUsersCotroller = {
     }
 }
 
-module.exports = apiUsersCotroller
+module.exports = apiUsersController
