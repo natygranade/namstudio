@@ -140,5 +140,7 @@ button{
 .item div{
   display: inline;
   margin: 10vh 6%;
-
+}
+.total.row{
+  padding-bottom:2vh;
 }
