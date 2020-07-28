@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-let usersController = require ('../controllers/usersController.js')
+let usersController = require ('../controllers/usersController')
 let loginMiddleware = require ('../middlewares/loginMiddleware')
 let signupMiddleware = require('../middlewares/signupMiddleware')
 const multer = require ('multer')
@@ -30,7 +30,7 @@ router.post('/signup',upload.any(), signupMiddleware,  usersController.create);
 
 router.get('/login', usersController.login);
 
-router.post('/login',loginMiddleware, usersController.processLogin)
+router.post('/login', loginMiddleware, usersController.processLogin)
 
 router.get('/check', usersController.check)
 
