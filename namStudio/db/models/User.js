@@ -16,7 +16,7 @@ module.exports = (sequelize, type)=>{
             allowNull: false
         },
         password:{
-            type: type.STRING(8),
+            type: type.STRING(100),
             allowNull: false
         },
         adress:{
@@ -51,7 +51,8 @@ module.exports = (sequelize, type)=>{
         },
         avatar: {
             type: type.STRING(100),
-            allowNull: false,
+            allowNull: true,
+            defaultValue: null
                    }
               
     },{

@@ -18,7 +18,12 @@ let usersController= {
         let errors = validationResult(req)
         
         if (errors.isEmpty()){
-            
+            let avatar; 
+            if( req.files[0] == undefined){
+                avatar = ""
+            } else{
+                avatar = req.files[0].filename
+            }
             db.User.create({
                 
                 full_name: req.body.name,
@@ -27,7 +32,7 @@ let usersController= {
                 adress: req.body.adress,
                 country: req.body.country,
                 phone: req.body.phone,
-                avatar: req.files[0].filename,
+                avatar: avatar,
                 terms: req.body.terms,
                 admin: req.body.admin
             })
@@ -38,27 +43,28 @@ let usersController= {
             return res.render('signup',{errors: errors.errors})
         }
     },
-    processLogin:  async function (req,res){
+    processLogin: function (req,res){
         let errors = validationResult(req)
         if (errors.isEmpty()){
-            
-            await db.User.findOne({
+            db.User.findOne({
                 where: {
                     email: req.body.email,
                 }
             })                      
-            .then (userToLog =>{
+            .then ( userToLog =>{
                 
                 if (userToLog) {
-                    let valid = bcrypt.compare(req.body.password, userToLog.password)
-                    
+                    let valid = bcrypt.compareSync(req.body.password, userToLog.password)
                     if (valid) {
                         req.session.userLoged = userToLog.id
                         return res.render('index')
                     } else {
                         return res.render('login', {errors: [{msg:'contrasena invalida'}]}) 
                     }
-                } 
+                    
+                } else{
+                    return res.render('login', {errors: [{msg:'Usuario no registrado'}]}) 
+                }
             })
         }
         else{
@@ -77,13 +83,64 @@ let usersController= {
     edit: function (req,res){
         
         db.User.findByPk(req.params.id)
-        .then(function(User){
+        .then(function(user){
             res.render('userEdit', {user:user});
+        })
+    },
+    
+    update: function (req, res){
+        let avatar; 
+        if( req.files[0] == undefined){
+            avatar = ""
+        } else{
+            avatar = req.files[0].filename
         }
-        )},
+        db.User.update({
+            
+            full_name: req.body.name,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            adress: req.body.adress,
+            country: req.body.country,
+            phone: req.body.phone,
+            avatar: avatar,
+            terms: req.body.terms
+            
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
         
-        update: function (req, res){
-            db.User.update({
+        
+        res.redirect('/dashboard')
+    },
+    
+    delete: function (req,res,next){
+        db.User.findByPk(req.params.id)
+        .then(user =>{
+            fs.unlink(`./data/avatar/${user.avatar}`, (err) => {
+                if (err) throw err;
+            })
+        })
+        db.User.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        
+        res.redirect('/dashboard')
+        
+    },
+    admin: function (req,res){
+        res.render('newAdmin')
+    },
+    createAdmin:  function (req,res, next){
+        let errors = validationResult(req)
+        console.log(errors)
+        if (errors.isEmpty()){
+            
+            db.User.create({
                 
                 full_name: req.body.name,
                 email: req.body.email,
@@ -92,62 +149,19 @@ let usersController= {
                 country: req.body.country,
                 phone: req.body.phone,
                 avatar: req.files[0].filename,
-                terms: req.body.terms
-                
-            }, {
-                where: {
-                    id: req.params.id
-                }
+                terms: req.body.terms,
+                admin: req.body.admin
             })
-            res.redirect('/users/edit/' + req.params.id)
-        },
+            .catch(function(err){
+                console.log(err)
+            })
+            
+            return  res.redirect('/dashboard')
+        }else{
+            return res.render('newAdmin',{errors: errors.errors})
+        }
         
-        delete: function (req,res,next){
-            db.User.findByPk(req.params.id)
-            .then(user =>{
-                fs.unlink(`./data/avatar/${user.avatar}`, (err) => {
-                    if (err) throw err;
-                })
-            })
-            db.User.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-            
-            res.redirect('/users/signup')
-            
-        },
-        admin: function (req,res){
-            res.render('newAdmin')
-        },
-        createAdmin:  function (req,res, next){
-            let errors = validationResult(req)
-            console.log(errors)
-            if (errors.isEmpty()){
-                
-                db.User.create({
-                    
-                    full_name: req.body.name,
-                    email: req.body.email,
-                    password: bcrypt.hashSync(req.body.password, 10),
-                    adress: req.body.adress,
-                    country: req.body.country,
-                    phone: req.body.phone,
-                    avatar: req.files[0].filename,
-                    terms: req.body.terms,
-                    admin: req.body.admin
-                })
-                .catch(function(err){
-                    console.log(err)
-                })
-                
-                return  res.redirect('/dashboard')
-            }else{
-                return res.render('newAdmin',{errors: errors.errors})
-            }
-            
-        } 
-    }
-    
-    module.exports = usersController;
+    } 
+}
+
+module.exports = usersController;
