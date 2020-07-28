@@ -1,12 +1,12 @@
 window.addEventListener('load', function(){
 
-    let addCart = document.getElementsByClassName('add-to-cart')
+    let remove = document.getElementsByClassName('remove')
 
-    Array.from(addCart).forEach(add =>{
-        add.addEventListener('click', function(){
-
+    Array.from(remove).forEach(remove =>{
+        remove.addEventListener('click', function(e){
+console.log(e.target.value)
             fetch('/cart', {
-                method: 'post',
+                method: 'DELETE',
                 headers:{
                     'Content-Type':'application/json'
                 },
