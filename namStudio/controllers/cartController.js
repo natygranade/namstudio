@@ -4,16 +4,20 @@ let db = require('../db/models')
 
 
 let cartController= {
-    cart:  function( req, res){
-        db.Cart.findOne({
+    cart: function(req, res){
+        db.Cart.findAll({
             include: ['products'],
             where:{
-                user_id: 2
+                user_id: 2,
+                //  user_id: req.session.userLoged
             }
-        }).then(result =>{
-            console.log(result)
-            if(result){
-                return res.render('cart', {cart:result})
+            
+        }).then( response => {
+            let carts = Array.from(response)
+            let lastCart = carts[carts.length-1]
+            
+            if(lastCart){
+                return res.render('cart', {cart:lastCart})
             }
         })
         .catch(function(error){
@@ -21,14 +25,40 @@ let cartController= {
         })
     },
     add: async function(req,res){
-let cart = await db.Cart.findOne({
-    where:{
-        user_id: 2
+        await db.Cart.findAll({
+            include: ['products'],
+            where:{
+                user_id: 2,
+                //  user_id: req.session.userLoged
+            }
+            
+        }).then( response => {
+            let carts = Array.from(response)
+            let lastCart = carts[carts.length-1]
+            
+            lastCart.addProduct(req.body.product_id)
+            res.json(lastCart)
+        })
+    },
+    
+    remove: async function(req,res){
+        await db.Cart.findAll({
+            include: ['products'],
+            where:{
+                user_id: 2,
+                //  user_id: req.session.userLoged
+            }
+            
+        }).then( response => {
+            let carts = Array.from(response)
+            let lastCart = carts[carts.length-1]
+
+            lastCart.removeProduct(req.body.product_id)
+            res.json(lastCart)
+        })
     }
-})
-cart.addProduct(req.body.product_id)
-res.json(cart)
-}   
 }
 
 module.exports = cartController;
+
+
