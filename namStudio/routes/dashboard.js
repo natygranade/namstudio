@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 let usersController = require ('../controllers/usersController')
 let productsController = require ('../controllers/productsController')
-let productValidator = require('../middlewares/validators/productValidator')
+let productValidator = require('../middlewares/productValidator')
 let signupMiddleware = require('../middlewares/signupMiddleware')
 
 const multer = require ('multer')
@@ -39,21 +39,18 @@ router.get('/', async function(req,res,next){
     .then(function([users, products]){
           return  res.render('dashboard', {users:users, products:products})
         })
-
-        .catch(error=>{
-            console.log(error)
-        })
+        .catch(error=> console.log(error))
     })
 
 router.get('/newAdmin', usersController.admin);
 
 router.post('/newAdmin', upload.any(),signupMiddleware, usersController.createAdmin);
 
-router.get('/edit/:id', usersController.edit);
+router.get('/editUser/:id', usersController.edit);
 
-router.patch('/edit/:id', upload.any(), usersController.update);
+router.patch('/editUser/:id', upload.any(), usersController.update);
 
-router.delete('/edit/:id', usersController.delete);
+router.delete('/editUser/:id', usersController.delete);
 
 router.get('/cargaProducto',  productsController.cargaProducto);
 
