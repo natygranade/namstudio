@@ -5,8 +5,8 @@ let cartController = require ('../controllers/cartController.js')
 /* GET home page. */
 router.get('/', indexController.index);
 
-router.get('/quienes', indexController.quienes);
+router.get('/aboutUs', indexController.aboutUs);
 
-router.get('/contacto', indexController.contacto);
+router.get('/contact', indexController.contact);
 
 module.exports = router;

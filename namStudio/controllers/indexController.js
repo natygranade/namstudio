@@ -2,13 +2,14 @@ let indexController= {
     index: function( req, res){
         res.render('index')
     },
-    quienes: function( req, res){
-        res.render('quienes')
+    aboutUs: function( req, res){
+        res.render('aboutUs')
     },
     
-    contacto: function( req, res){
-        res.render('contacto')
+    contact: function( req, res){
+        res.render('contact')
     },
+    
 }
 
 module.exports = indexController;
