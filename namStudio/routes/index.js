@@ -5,7 +5,7 @@ let cartController = require ('../controllers/cartController.js')
 /* GET home page. */
 router.get('/', indexController.index);
 
-router.get('/', indexController.search);
+router.get('/search', indexController.search);
 
 router.get('/aboutUs', indexController.aboutUs);
 
