@@ -14,7 +14,7 @@ window.addEventListener('load', function (){
             }
         }
     })
-    
+
     fetch("http://localhost:8000/api/cart")
     .then(response =>  response.json())
     .then(data => {
@@ -23,5 +23,19 @@ window.addEventListener('load', function (){
             cart.innerHTML = data.products.length
         }
     })
-})
 
+    let addCart = document.getElementsByClassName('add-to-cart')
+    
+    Array.from(addCart).forEach(add =>{
+        add.addEventListener('click', function(){
+            fetch("http://localhost:8000/api/cart")
+            .then(response =>  response.json())
+            .then(data => {
+                if(data){
+                    let cart = document.getElementById('cart')
+                    cart.innerHTML = data.products.length
+                }
+            })
+        })
+    })
+})
