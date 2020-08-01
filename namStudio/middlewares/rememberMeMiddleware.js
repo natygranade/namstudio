@@ -1,7 +1,7 @@
 const session= require('express-session')
 let db = require('../db/models')
 
-module.exports =  function rememberMeMiddleware (req,res,next){
+module.exports =  function (req,res,next){
     
     if(req.cookies.rememberMe != undefined && req.session.userLoged == undefined){
         
