@@ -11,4 +11,6 @@ router.get('/aboutUs', indexController.aboutUs);
 
 router.get('/contact', indexController.contact);
 
+router.get('/trend', indexController.trend);
+
 module.exports = router;

@@ -57,6 +57,9 @@ let productResult = []
     contact: function( req, res){
         res.render('contact')
     },
+    trend: function(req,res){
+        res.render('trend')
+    }
     
 }
 
