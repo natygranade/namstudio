@@ -54,6 +54,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(rememberMeMiddleware)
 
+const createCart = require('./middlewares/createCart')
+app.use(function (req,res,next){
+  if(req.session.newCart === undefined){
+  createCart()
+  } else{
+    next()
+  }
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/collection', productsRouter);
@@ -62,6 +71,7 @@ app.use('/cart', cartRouter);
 app.use('/api/products', apiProductsRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/cart', apiCartRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -76,7 +86,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('index');
 });
 
 module.exports = app;
