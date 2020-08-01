@@ -42,7 +42,7 @@ let productResult = []
                 
                         }
 
-        return  res.render('search',{products:productResult})
+        return  res.render('collection',{products:productResult})
        })
        .catch(error => console.log(error))
 

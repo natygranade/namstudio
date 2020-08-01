@@ -8,30 +8,33 @@ module.exports = (sequelize, type)=>{
             allowNull: false
         },
         quantity:{
-            type: type.INTEGER(6),
-            allowNull: false
+            type: type.INTEGER(100),
+            allowNull: true
         },
         total:{
-            type: type.DECIMAL(4,2),
-            allowNull: false
+            type: type.DECIMAL(10,2),
+            allowNull: true
         },
         paid:{
             type: type.BOOLEAN,
-            allowNull: false
+            allowNull: true
         },
         
         createdAt:{
-            type: type.DATE
+            type: type.DATE,
+            allowNull: true,
         },
         updatedAt:{
-            type: type.DATE
+            type: type.DATE,
+            allowNull: true
         },
         deletedAt:{
-            type: type.DATE
+            type: type.DATE,
+            allowNull: true
         },
         user_id: {
             type: type.INTEGER,
-            allowNull: false
+            allowNull: true
         }
         
     },{
@@ -47,13 +50,15 @@ module.exports = (sequelize, type)=>{
     Cart.associate = function(models){
         Cart.belongsTo( models.User,{
             as: "user",
-            foreignKey: "user_id"
+            foreignKey: "user_id",
+            timestamps: true
             
         })
 
         Cart.belongsTo( models.Payment,{
             as: "payment",
-            foreignKey: "payment_id"
+            foreignKey: "payment_id",
+            timestamps: true
             
         })
  

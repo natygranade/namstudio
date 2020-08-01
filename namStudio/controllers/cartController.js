@@ -8,7 +8,7 @@ let cartController= {
         db.Cart.findAll({
             include: ['products'],
             where:{
-                user_id: 2,
+                user_id: 4,
                 //  user_id: req.session.userLoged
             }
             
@@ -28,7 +28,7 @@ let cartController= {
         await db.Cart.findAll({
             include: ['products'],
             where:{
-                user_id: 2,
+                user_id: 4,
                 //  user_id: req.session.userLoged
             }
             
@@ -45,7 +45,7 @@ let cartController= {
         await db.Cart.findAll({
             include: ['products'],
             where:{
-                user_id: 2,
+                user_id: 4,
                 //  user_id: req.session.userLoged
             }
             
