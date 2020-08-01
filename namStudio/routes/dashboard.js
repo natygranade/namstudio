@@ -4,6 +4,7 @@ let usersController = require ('../controllers/usersController')
 let productsController = require ('../controllers/productsController')
 let productValidator = require('../middlewares/productValidator')
 let signupMiddleware = require('../middlewares/signupMiddleware')
+let dashboardMiddleware = require('../middlewares/dashboardMiddleware')
 
 const multer = require ('multer')
 const path = require('path')
@@ -31,7 +32,7 @@ var storageProduct = multer.diskStorage({
   })  
 var uploadProduct = multer({ storage: storageProduct})
 
-router.get('/', async function(req,res,next){
+router.get('/', dashboardMiddleware, async function(req,res,next){
     let users = await db.User.findAll()
     let products =  db.Product.findAll()
     
