@@ -55,13 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(rememberMeMiddleware)
 
 const createCart = require('./middlewares/createCart')
-app.use(function (req,res,next){
-  if(req.session.newCart === undefined){
-  createCart()
-  } else{
-    next()
-  }
-})
+app.use(createCart)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
