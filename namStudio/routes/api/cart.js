@@ -3,36 +3,28 @@ let router = express.Router()
 let db = require('../../db/models')
 
 router.get ('/',  function(req,res){
-    db.Cart.findAll({
+    db.Cart.findOne({
         include: ['products'],
         where:{
-            user_id: 4
- //  user_id: req.session.userLoged
-           }
-}).then( response => {
-let carts = Array.from(response)
-
-        res.json(carts[carts.length-1])
-})
-
+            id: req.session.newCart
+        }
+    }).then( cart => {
+        res.json(cart)
+    }) 
 })
 
 router.get('/products', function(req,res){
-
-    db.Cart.findAll({
+    
+    db.Cart.findOne({
         include: ['products'],
         where:{
-            user_id: 4,
- //  user_id: req.session.userLoged
+            id: req.session.newCart
         }
-
-        }).then( response => {
-            let carts = Array.from(response)
-            let lastCart = carts[carts.length-1]
-            res.json(lastCart.products)
-        })
-
-        })
+    }).then( cart => {
+        res.json(cart.products)
+    })
+    
+})
 
 
 module.exports = router
