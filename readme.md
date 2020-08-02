@@ -1,6 +1,6 @@
 # Grupo 1 - NAM Studio
 
-Este proyecto se trata de un ecommerce orientado a personas interesadas en comprar estampas para ser aplicadas a cualquier producto, ya se indumentaria, deco de hogar, objetos o cualquier plataforma digital. Cuando comenzamos a planificar este proyecto nos propusimos lograr que el usuario pueda tener un conocimiento básico sobre las tendecias del momento y poder comprar estampas digitales. En esta aplicacion los usuarios registrados pueden ver diseños de estampados con repeticion continua exclusivos y no exclusivos creados a partir de las tendencias actuales. En el futuro queremos expandir este desarrollo y lograr crear colecciones especificas de acuerdo a los pedidos de los clientes.
+Este proyecto se trata de un ecommerce orientado a personas interesadas en comprar estampas para ser aplicadas a diversos productos, ya sea indumentaria, deco de hogar, objetos o cualquier plataforma digital. Cuando comenzamos a planificar este proyecto nos propusimos lograr que el usuario pueda tener un conocimiento básico sobre las tendencias del momento y poder comprar estampas digitales. En esta aplicacion los usuarios pueden ver diseños de estampados con repeticion continua exclusivos y no exclusivos creados a partir de las tendencias actuales. También pueden armar colecciones personalizadas y visualizar las estampas aplicadas a distintos productos. En el futuro queremos expandir este desarrollo y lograr crear colecciones especificas de acuerdo a los pedidos de los clientes.
 
 
 
@@ -11,7 +11,7 @@ Diseñadora textil, dibujo estampados principalmente para moda de mujer. Quiero 
 
 ###### Agustina Pinheiro
 
-MBA, cansada de ser contadora, quiero dedicarme a la programacion por eso acepte participar del desarrollo de este nuevo sitio web, no tengo idea de moda pero me encantan los diseños de Naty Granade, asique no dude en unirme a su equipo!!
+MBA, contadora, quiero sumergirme en el mundo de la programacion para poder entender sus multiples aplicaciones y complejidades.
 
 ###### Mercedes Scella
 Analista en sistemas  con ganas de formarme profesionalmente en el mundo de la programación. Buscando experiencias y proyectos que formen ese camino.
@@ -24,7 +24,7 @@ Analista en sistemas  con ganas de formarme profesionalmente en el mundo de la p
 
 ## Utilizacion
 
-Ingresar a ```http://localhost/namstudio/index.html``` 
+Ingresar a http://localhost:8000
 
 ## Tablero de trabajo
 
@@ -63,6 +63,6 @@ Ingresar a ```http://localhost/namstudio/index.html```
 
 ## Agradecimientos
 
-- A los profesores! Alejandro Villafañe y Maria Eugenia Gargiulo
+- A los profesores! Ale Villafañe,  Maru Gargiulo (aunque nos haya abandonado.. :( ) y a Agus Pittari
 
 
