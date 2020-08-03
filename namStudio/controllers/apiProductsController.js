@@ -8,7 +8,7 @@ list: function (req,res){
     })
     .then(products =>{
         for(let i=0;i<products.length;i++){
-            products[i].setDataValue( "image_path", "namStudio/data/cws" + products[i].cw1 )
+            products[i].setDataValue( "image_path", "namStudio/data/cws/" + products[i].cw1 )
         }
   
 res.json(products)

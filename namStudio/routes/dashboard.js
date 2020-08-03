@@ -43,21 +43,21 @@ router.get('/', dashboardMiddleware, async function(req,res,next){
         .catch(error=> console.log(error))
     })
 
-router.get('/newAdmin', usersController.admin);
+router.get('/newAdmin', dashboardMiddleware, usersController.admin);
 
-router.post('/newAdmin', upload.any(),signupMiddleware, usersController.createAdmin);
+router.post('/newAdmin', upload.any(),signupMiddleware, dashboardMiddleware, usersController.createAdmin);
 
 router.get('/editUser/:id', usersController.edit);
 
-router.patch('/editUser/:id', upload.any(), usersController.update);
+router.patch('/editUser/:id', upload.any(), dashboardMiddleware, usersController.update);
 
-router.delete('/editUser/:id', usersController.delete);
+router.delete('/editUser/:id', dashboardMiddleware, usersController.delete);
 
-router.get('/cargaProducto',  productsController.cargaProducto);
+router.get('/cargaProducto', dashboardMiddleware,  productsController.cargaProducto);
 
-router.post('/cargaProducto', uploadProduct.any(),productValidator,  productsController.create);
+router.post('/cargaProducto', uploadProduct.any(),productValidator, dashboardMiddleware,  productsController.create);
 
-router.get('/editProduct/:id', productsController.edit)
+router.get('/editProduct/:id', dashboardMiddleware, productsController.edit)
 
 router.patch('/editProduct/:id', uploadProduct.any(), productsController.update) 
 
