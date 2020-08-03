@@ -1,6 +1,20 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-function Sidebar (){
+class Sidebar extends Component {
+    constructor(){
+        super();
+        this.state ={
+            
+        }
+    }
+    
+showDesigns(){
+    
+document.getElementById("main").style.display="none"
+document.getElementById("designs").style.display="block"
+}
+ 
+   render(){
     return(
    
        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -27,14 +41,14 @@ function Sidebar (){
         <hr className="sidebar-divider"></hr>
 
          {/* Heading */}
-        <div className="sidebar-heading">Actions</div>
+        <div  className="sidebar-heading">Actions</div>
 
          {/* Nav Item - Pages*/} 
-        <li className="nav-item">
-            <a className="nav-link collapsed" href="/">
+        <li  className="nav-item">
+            <p onClick={this.showDesigns} className="nav-link collapsed" >
             <i className="fas fa-palette"></i>
-                <span>Designs</span>
-            </a>
+               <span>Designs</span> 
+            </p>
         </li>
 
          {/* Nav Item - Charts  */}
@@ -46,9 +60,9 @@ function Sidebar (){
 
          {/*Nav Item - Tables */} 
         <li className="nav-item">
-            <a className="nav-link" href="/">
+            <p className="nav-link">
             <i className="fas fa-shopping-basket"></i>
-                <span>Purchases</span></a>
+                <span>Purchases</span></p>
         </li>
 
         {/*Divider */}
@@ -56,6 +70,7 @@ function Sidebar (){
     </ul>
   
     )
+   }
 }
 
 export default Sidebar
