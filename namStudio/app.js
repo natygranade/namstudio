@@ -22,7 +22,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
      secure: false,
-     maxAge: 86400
+     maxAge: 8640000
    }
 }))
 app.use(methodOverride('_method'))
