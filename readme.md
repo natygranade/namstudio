@@ -24,7 +24,7 @@ Analista en sistemas  con ganas de formarme profesionalmente en el mundo de la p
 
 ## Utilizacion
 
-Ingresar a ```http://localhost/namstudio/index.html``` 
+Ingresar a ```http://localhost:8000/``` 
 
 ## Tablero de trabajo
 
@@ -37,6 +37,7 @@ Ingresar a ```http://localhost/namstudio/index.html```
 - [Just in mind prototyper](https://www.justinmind.com/)
 - Github
 - XAMPP, servidor local de PHP y MySQL
+- MySQL Workbench
 - Visual Studio Code
 
 
@@ -57,12 +58,13 @@ Ingresar a ```http://localhost/namstudio/index.html```
 #### Colores
 
 - Negro #000000
-- Gris oscuro #404040
+- Gris oscuro #666666
 - Gris medio #82888C
-- Gris Claro #999999
+- Gris Claro #cacaca
+- Rojo rgb(190, 10, 10) 
 
 ## Agradecimientos
 
-- A los profesores! Alejandro Villafañe y Maria Eugenia Gargiulo
+- A los profesores! Alejandro Villafañe, Maria Eugenia Gargiulo y Agustin Pittari
 
 
