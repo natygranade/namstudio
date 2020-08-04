@@ -132,12 +132,12 @@ let usersController= {
     },
     
     delete: function (req,res,next){
-        db.User.findByPk(req.params.id)
-        .then(user =>{
-            fs.unlink(`./data/avatar/${user.avatar}`, (err) => {
-                if (err) throw err;
-            })
-        })
+        // db.User.findByPk(req.params.id)
+        // .then(user =>{
+        //     fs.unlink(`./data/avatar/${user.avatar}`, (err) => {
+        //         if (err) throw err;
+        //     })
+        // })
         db.User.destroy({
             where: {
                 id: req.params.id
