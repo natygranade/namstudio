@@ -16,19 +16,19 @@
 <body>
   <%- include('./partials/header.ejs') %>
   
-  <div class="form container-fluid">
+  <div class="form container">
  <div class="row">
-      <div class="col-12 col-md-6 col-lg-3">
-        <form  method="POST" action= "/collection/dashboard/editProduct/<%=product.id%>?_method=PATCH" enctype="multipart/form-data">
+      <div class="col-12 col-md-6 col-lg-4">
+        <form  method="POST" action= "/dashboard/editProduct/<%=product.id%>?_method=PATCH" enctype="multipart/form-data">
         <label for="name">Nombre de diseño</label></br>
-        <input type="text" value="<%=product.name%>" name="name">
+        <input class="form-control" type="text" value="<%=product.name%>" name="name">
       </br>
       <label for="detail">Detalle</label></br>
-      <textarea name="detail" value="<%=product.detail%>"></textarea>
+      <textarea class="form-control" name="detail" value="<%=product.detail%>"></textarea>
     </br>
     
     <label for="category">Categorias</label></br>
-    <select name="category" >
+    <select class="form-control" name="category" >
       <%for(let i=0;i<categories.length; i++){%>
         
         <option value= "<%=categories[i].id%>" selected><%=categories[i].name%></option>
@@ -37,16 +37,16 @@
       </select>
     </br>
       <label for="size">Medidas en cm</label></br>
-      <input type="text" value="<%=product.size%>" name="size">
+      <input class="form-control" type="text" value="<%=product.size%>" name="size">
     </br>
     <label for="price">Precio en USD</label></br>
-    <input type="number" value="<%=product.price%>" name="price">
+    <input class="form-control" type="number" value="<%=product.price%>" name="price">
   </br>
   <label for="exclusive">Exclusivo</label> 
   <input type="checkbox" name="exclusive" value="true">
 </div> 
 
-<div class="col-12 col-md-6 col-lg-3">
+<div class="col-12 col-md-6 col-lg-8">
   <label for="colorways">Subir 3 colorways</label></br>
   
   <input type="file" name="colorways" value="<%= product.cw1 %>" onchange="document.getElementById('cw1').src = window.URL.createObjectURL(this.files[0]), document.getElementById('cw2').src = window.URL.createObjectURL(this.files[1]), document.getElementById('cw3').src = window.URL.createObjectURL(this.files[2])" multiple>
@@ -55,11 +55,16 @@
 <img id="cw2" alt="CW" height="150px"/>
 <img id="cw3" alt="CW" height="150px"/>
 </br>
-
-<button  type="submit">CARGAR</button>
+<div>
+<p>COLORWAYS:</p> 
+<img src="/data/cws/<%=product.cw1%>" alt="CW1" height="100px">
+<img src="/data/cws/<%=product.cw2%>" alt="CW2" height="100px">
+<img src="/data/cws/<%=product.cw3%>" alt="CW3" height="100px">
+</div>
+<button  type="submit">MODIFICAR</button>
 
 </form>
-<form action="/collection/dashboard/editProduct/<%=product.id%>?_method=DELETE" method="POST">
+<form action="/dashboard/editProduct/<%=product.id%>?_method=DELETE" method="POST">
   <button type="submit">BORRAR</button>
 </form>
 </div>

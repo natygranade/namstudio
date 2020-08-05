@@ -65,15 +65,28 @@ let productsController= {
             let errors = validationResult(req)
             
             if (errors.isEmpty()){
-                
+                let files1 =  req.files[0]
+                let files2 = req.files[1]
+                let files3 =  req.files[2]
+              
+    if(files1 !== undefined && files2 !== undefined && files3 !== undefined){
+    files10 = files1.filename
+    files20 = files2.filename
+    files30 = files3.filename
+       
+    } else{
+        files10 = "no image "
+        files20 = "no image "
+        files30 = "no image "
+    }     
                 db.Product.create({
                     id: req.body.id,
                     name: req.body.name,
                     detail: req.body.detail,
                     category_id: req.body.categories,
-                    cw1: req.files[0].filename,
-                    cw2: req.files[1].filename,
-                    cw3: req.files[2].filename, 
+                    cw1: files10,
+                    cw2: files20,
+                    cw3: files30, 
                     exclusive: req.body.exclusive,
                     size: req.body.size,
                     price: req.body.price
@@ -131,15 +144,28 @@ let productsController= {
                         })
                     },
                     update: function(req,res, next){
-                        
+                        let files1 =  req.files[0]
+                        let files2 = req.files[1]
+                        let files3 =  req.files[2]
+                      
+            if(files1 !== undefined && files2 !== undefined && files3 !== undefined){
+            files10 = files1.filename
+            files20 = files2.filename
+            files30 = files3.filename
+               
+            } else{
+                files10 = "no image"
+                files20 = "no image"
+                files30 = "no image"
+            }    
                         db.Product.update({
                             
                             name: req.body.name,
                             detail: req.body.detail,
                             category_id: req.body.category,
-                            cw1: Product.cw1,
-                            cw2: Product.cw2,
-                            cw3: Product.cw3, 
+                            cw1: files10,
+                            cw2: files20,
+                            cw3: files30, 
                             exclusive: req.body.exclusive,
                             size: req.body.size,
                             price: req.body.price
